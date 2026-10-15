@@ -3,7 +3,7 @@
  * Change the values here and the whole site updates.
  */
 export const brand = {
-  name: "The Wedding Edit",
+  name: "Serein Atelier",
   tagline: "Your Story. Beautifully Invited.",
   heroHeadline: "Invite them with a story, not a card.",
   description:
