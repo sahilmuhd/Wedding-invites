@@ -40,7 +40,12 @@ export const featuredInvitations: Invitation[] = all
   .filter((i) => i.featured)
   .sort((a, b) => (a.featured ?? 0) - (b.featured ?? 0));
 
-export const heroInvitations: Invitation[] = all.filter((i) => i.poster).slice(0, 3);
+const HERO_IDS = ["sanoop-fidha", "vinay-athira", "jishnu-vibha"];
+const curatedHero = HERO_IDS.map((id) => all.find((i) => i.id === id)).filter(
+  (i): i is Invitation => Boolean(i && i.poster),
+);
+export const heroInvitations: Invitation[] =
+  curatedHero.length === 3 ? curatedHero : all.filter((i) => i.poster).slice(0, 3);
 
 export function initials(i: Pick<Invitation, "bride" | "groom">): string {
   const a = (i.bride || i.groom)[0] ?? "";
