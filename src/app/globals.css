@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ivory: #faf7f2;
+  --color-gold: #c6a77a;
+  --color-gold-deep: #765b32; /* darker gold for text on ivory (contrast ≥ 4.5:1) */
+  --color-charcoal: #282420;
+  --color-beige: #ede4d8;
+  --color-blush: #f2e7e4;
+  --color-ink-soft: #5d554c; /* muted body text on ivory */
+
+  --font-serif: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  --font-sans: var(--font-jost), "Jost", system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    background: var(--color-ivory);
+    color: var(--color-charcoal);
+    font-family: var(--font-sans);
+    overflow-x: clip;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-charcoal);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+}
+
+@layer components {
+  .eyebrow {
+    @apply text-[0.72rem] font-medium uppercase tracking-[0.28em] text-gold-deep;
+  }
+  .heading {
+    @apply font-serif font-medium leading-[1.05] tracking-tight text-charcoal;
+  }
+  .gold-rule {
+    @apply block h-px w-12 bg-gold;
+  }
+}
+
+/* FAQ accordion marker */
+details > summary { list-style: none; }
+details > summary::-webkit-details-marker { display: none; }
+details[open] .faq-plus { transform: rotate(45deg); }
