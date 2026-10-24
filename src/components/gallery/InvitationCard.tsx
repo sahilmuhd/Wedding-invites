@@ -2,6 +2,7 @@ import { ExternalLink } from "lucide-react";
 import type { Invitation } from "@/types/invitation";
 import { categoryLabel, displayName } from "@/lib/invitations";
 import { designEnquiryLink } from "@/lib/whatsapp";
+import { formatPrice } from "@/config/pricing";
 import { InvitationPreview } from "./InvitationPreview";
 import { ButtonLink } from "@/components/ui/Button";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
@@ -26,13 +27,10 @@ export function InvitationCard({ invitation, priority = false }: { invitation: I
       )}
       <p className="eyebrow mt-6 !text-[0.66rem]">{categoryLabel[invitation.category]}</p>
       <h3 className="heading mt-1.5 text-[1.65rem]">{name}</h3>
-      <div className="mt-2.5 flex items-center justify-center gap-1.5 flex-wrap">
-        <span className="rounded-full border border-beige bg-ivory px-2.5 py-0.5 text-[0.68rem] font-medium text-ink-soft">₹999</span>
-        <span className="text-[0.6rem] text-ink-soft/50">·</span>
-        <span className="rounded-full border border-beige bg-ivory px-2.5 py-0.5 text-[0.68rem] font-medium text-ink-soft">₹1,299</span>
-        <span className="text-[0.6rem] text-ink-soft/50">·</span>
-        <span className="rounded-full border border-gold/40 bg-gold/5 px-2.5 py-0.5 text-[0.68rem] font-semibold text-gold-deep">₹1,499+</span>
-      </div>
+      <p className="mt-2 text-sm">
+        <span className="font-semibold text-gold-deep">{formatPrice(invitation.price)}</span>
+        <span className="ml-1 text-xs text-ink-soft">/ one-time</span>
+      </p>
       <div className="mt-5 flex w-full flex-col gap-2.5">
         {invitation.url && (
           <ButtonLink href={invitation.url} variant="outline" size="sm">
