@@ -2,7 +2,7 @@ import { ArrowDown } from "lucide-react";
 import { brand } from "@/config/brand";
 import { generalEnquiryLink } from "@/lib/whatsapp";
 import { heroInvitations, invitations } from "@/lib/invitations";
-import { formatPrice, pricing } from "@/config/pricing";
+import { formatPrice, startingPrice } from "@/config/pricing";
 import { ButtonLink } from "@/components/ui/Button";
 import { InvitationPreview } from "@/components/gallery/InvitationPreview";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
@@ -22,7 +22,7 @@ export function Hero() {
             shared with a single link and delivered in 48 hours.
           </p>
           <p className="mt-6 font-serif text-2xl text-charcoal">
-            From <span className="text-gold-deep">{formatPrice(pricing.startingPrice)}</span>
+            From <span className="text-gold-deep">{formatPrice(startingPrice)}</span>
             <span className="ml-2 text-base text-ink-soft">one-time, no hidden charges</span>
           </p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">

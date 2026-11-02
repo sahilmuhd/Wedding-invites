@@ -1,6 +1,6 @@
 import { Check, Sparkles } from "lucide-react";
 import { formatPrice, pricing } from "@/config/pricing";
-import { packageEnquiryLink } from "@/lib/whatsapp";
+import { customEnquiryLink, packageEnquiryLink } from "@/lib/whatsapp";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ButtonLink } from "@/components/ui/Button";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
@@ -78,7 +78,7 @@ export function Pricing() {
         <p className="mt-12 text-center text-sm text-ink-soft">
           Need a completely bespoke concept or rush 24h delivery?{" "}
           <a
-            href={packageEnquiryLink("Bespoke Custom Invitation", 2499)}
+            href={customEnquiryLink()}
             className="font-medium text-charcoal underline underline-offset-4 hover:text-gold-deep"
           >
             Chat with our design team on WhatsApp

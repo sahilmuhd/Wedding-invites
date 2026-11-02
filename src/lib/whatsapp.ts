@@ -8,6 +8,11 @@ export function whatsappLink(message: string): string {
 export const generalEnquiryLink = () =>
   whatsappLink(`Hello ${brand.name}, I'd like to create a wedding invitation. Please share more details.`);
 
+export const customEnquiryLink = () =>
+  whatsappLink(
+    `Hello ${brand.name}, I'd like a completely custom invitation (or rush 24h delivery). Please share the details and pricing.`,
+  );
+
 export const designEnquiryLink = (designName: string, category?: string, price?: number) =>
   whatsappLink(
     `Hello ${brand.name}, I'm interested in customizing the ${designName}${category ? ` (${category})` : ""} invitation${

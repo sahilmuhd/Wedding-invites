@@ -1,9 +1,7 @@
 /**
- * Pricing taken from the original site data (legacy/samples.js):
- * DEFAULT_PRICE = 2499, and two showcase designs priced at 2999.
- * Edit here to change what the Pricing section shows. Nothing else is invented.
- * The lower category prices in legacy/samples.deduped.js were auto-generated
- * and are NOT used because they were never verified.
+ * Pricing plans shown in the Pricing section. Edit here to change them.
+ * Gallery cards use the per-invitation `price` in src/data/invitations.generated.json,
+ * which should match one of the plan prices below.
  */
 export interface PricingPlan {
   id: string;
@@ -19,9 +17,6 @@ export interface PricingPlan {
 export const pricing = {
   currency: "₹",
   locale: "en-IN",
-  startingPrice: 999,
-  premiumPrice: 1499,
-  premiumNote: "Affordable luxury for every couple. No hidden charges.",
   deliveryTime: "48 hours",
   plans: [
     {
@@ -75,19 +70,10 @@ export const pricing = {
       ],
     },
   ] satisfies PricingPlan[],
-  /** Included items for backwards compatibility. */
-  included: [
-    "Custom design around your colours, photos and culture",
-    "Delivery in 48 hours — share your reference today, get your link in 2 days",
-    "RSVP — guests confirm attendance right on the page",
-    "One-tap Google Maps directions for every venue",
-    "Your favourite song plays as guests open it",
-    "Pre-wedding photos and video in a smooth gallery",
-    "Live countdown to the big day",
-    "Designed for the phone it will be opened on",
-    "Free hosting",
-  ],
 } as const;
+
+/** Lowest plan price, so "From ₹…" can never drift from the plans. */
+export const startingPrice = Math.min(...pricing.plans.map((p) => p.price));
 
 export function formatPrice(amount: number): string {
   return `${pricing.currency}${amount.toLocaleString(pricing.locale)}`;
