@@ -19,7 +19,7 @@ export function InvitationCard({ invitation, priority = false }: { invitation: I
     </div>
   );
   return (
-    <article className="group flex h-full flex-col rounded-3xl border border-beige bg-white p-3 transition-shadow duration-300 hover:shadow-[0_16px_40px_-20px_rgba(17,24,39,0.3)]">
+    <article className="group flex h-full flex-col rounded-3xl border border-beige bg-white p-3 transition-shadow duration-300 hover:shadow-[0_16px_40px_-20px_rgba(40,36,32,0.3)]">
       <div className="overflow-hidden rounded-2xl">
         {invitation.url ? (
           <a href={invitation.url} target="_blank" rel="noopener noreferrer" className="block">

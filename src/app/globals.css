@@ -1,14 +1,13 @@
 @import "tailwindcss";
 
 @theme {
-  /* Token names are kept from the old theme; the values below are the modern palette. */
-  --color-ivory: #ffffff; /* page background */
-  --color-gold: #8b7bff; /* light accent: decoration, and text on dark sections */
-  --color-gold-deep: #4636b8; /* accent for text/icons on white (contrast ≥ 7:1) */
-  --color-charcoal: #111827;
-  --color-beige: #f1f3f7; /* light surfaces and borders */
-  --color-blush: #f4f2ff; /* soft accent tint */
-  --color-ink-soft: #4b5563; /* muted body text on white */
+  --color-ivory: #faf7f2;
+  --color-gold: #c6a77a;
+  --color-gold-deep: #765b32; /* darker gold for text on ivory (contrast ≥ 4.5:1) */
+  --color-charcoal: #282420;
+  --color-beige: #ede4d8;
+  --color-blush: #f2e7e4;
+  --color-ink-soft: #5d554c; /* muted body text on ivory */
 
   --font-serif: var(--font-inter), "Inter", system-ui, sans-serif; /* headings now use the same family */
   --font-sans: var(--font-inter), "Inter", system-ui, sans-serif;

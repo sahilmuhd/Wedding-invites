@@ -23,7 +23,7 @@ export function Pricing() {
               key={plan.id}
               className={`relative flex flex-col justify-between rounded-[2rem] p-8 sm:p-9 transition-all duration-300 ${
                 plan.popular
-                  ? "border-2 border-gold bg-white shadow-[0_20px_60px_-15px_rgba(70,54,184,0.18)] lg:-translate-y-2"
+                  ? "border-2 border-gold bg-white shadow-[0_20px_60px_-15px_rgba(118,91,50,0.18)] lg:-translate-y-2"
                   : "border border-beige bg-white/70 hover:shadow-lg"
               }`}
             >
