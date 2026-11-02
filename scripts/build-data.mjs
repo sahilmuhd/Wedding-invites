@@ -13,6 +13,15 @@ import fs from "node:fs";
 import path from "node:path";
 import sharp from "sharp";
 
+if (!process.argv.includes("--force")) {
+  console.error(
+    "Refusing to run: this regenerates src/data/invitations.generated.json from legacy/ and drops captured posters,
+" +
+      "hidden-duplicate edits and other manual changes. Re-run with --force if that is what you want.",
+  );
+  process.exit(1);
+}
+
 const root = path.resolve(import.meta.dirname, "..");
 const read = (p) => fs.readFileSync(path.join(root, p), "utf8");
 const loadSamples = (p) => new Function(read(p) + ";return SAMPLES")();

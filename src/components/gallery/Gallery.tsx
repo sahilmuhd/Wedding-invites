@@ -1,9 +1,12 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Search } from "lucide-react";
 import type { CategoryKey, Invitation } from "@/types/invitation";
 import { categoryTabs, displayName } from "@/lib/invitations";
+import { generalEnquiryLink } from "@/lib/whatsapp";
+import { ButtonLink } from "@/components/ui/Button";
+import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { InvitationCard } from "./InvitationCard";
 
 const PAGE_SIZE = 12;
@@ -12,6 +15,28 @@ export function Gallery({ items }: { items: Invitation[] }) {
   const [category, setCategory] = useState<CategoryKey | "All">("All");
   const [query, setQuery] = useState("");
   const [visible, setVisible] = useState(PAGE_SIZE);
+  const [synced, setSynced] = useState(false);
+
+  // Restore the filter from the URL (?cat=Nikah&q=name) after hydration so shared links work.
+  useEffect(() => {
+    // Deferred so the first render matches the server HTML (no hydration mismatch).
+    queueMicrotask(() => {
+      const params = new URLSearchParams(window.location.search);
+      const cat = params.get("cat");
+      if (cat && categoryTabs.some((t) => t.key === cat)) setCategory(cat as CategoryKey | "All");
+      setQuery(params.get("q") ?? "");
+      setSynced(true);
+    });
+  }, []);
+
+  useEffect(() => {
+    if (!synced) return;
+    const params = new URLSearchParams(window.location.search);
+    if (category === "All") params.delete("cat"); else params.set("cat", category);
+    if (query.trim()) params.set("q", query.trim()); else params.delete("q");
+    const qs = params.toString();
+    window.history.replaceState(null, "", `${window.location.pathname}${qs ? `?${qs}` : ""}${window.location.hash}`);
+  }, [category, query, synced]);
 
   const counts = useMemo(() => {
     const c: Record<string, number> = { All: items.length };
@@ -78,9 +103,14 @@ export function Gallery({ items }: { items: Invitation[] }) {
           ))}
         </ul>
       ) : (
-        <p className="mt-12 rounded-3xl bg-blush px-6 py-14 text-center text-ink-soft">
-          No invitations match. Try another category or name.
-        </p>
+        <div className="mt-12 rounded-3xl bg-blush px-6 py-14 text-center text-ink-soft">
+          <p>No invitations match. Try another category or name — or ask us for a custom design.</p>
+          <div className="mt-6 flex justify-center">
+            <ButtonLink href={generalEnquiryLink()} size="sm">
+              <WhatsAppIcon className="size-4" /> Request a custom design
+            </ButtonLink>
+          </div>
+        </div>
       )}
 
       {visible < filtered.length && (

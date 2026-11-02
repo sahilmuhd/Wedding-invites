@@ -1,7 +1,8 @@
 import { ArrowDown } from "lucide-react";
 import { brand } from "@/config/brand";
 import { generalEnquiryLink } from "@/lib/whatsapp";
-import { heroInvitations } from "@/lib/invitations";
+import { heroInvitations, invitations } from "@/lib/invitations";
+import { formatPrice, pricing } from "@/config/pricing";
 import { ButtonLink } from "@/components/ui/Button";
 import { InvitationPreview } from "@/components/gallery/InvitationPreview";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
@@ -20,18 +21,28 @@ export function Hero() {
             Personalised digital wedding invitation websites — with music, a live countdown, maps and RSVP —
             shared with a single link and delivered in 48 hours.
           </p>
-          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <ButtonLink href="#gallery" className="sm:min-w-48">
-              Explore Designs <ArrowDown className="size-4" aria-hidden="true" />
-            </ButtonLink>
-            <ButtonLink href={generalEnquiryLink()} variant="outline" className="sm:min-w-48">
+          <p className="mt-6 font-serif text-2xl text-charcoal">
+            From <span className="text-gold-deep">{formatPrice(pricing.startingPrice)}</span>
+            <span className="ml-2 text-base text-ink-soft">one-time, no hidden charges</span>
+          </p>
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+            <ButtonLink href={generalEnquiryLink()} variant="whatsapp" className="sm:min-w-48">
               <WhatsAppIcon className="size-4" /> Create Your Invitation
+            </ButtonLink>
+            <ButtonLink href="#gallery" variant="outline" className="sm:min-w-48">
+              Explore {invitations.length}+ Designs <ArrowDown className="size-4" aria-hidden="true" />
             </ButtonLink>
           </div>
           <p className="mt-8 text-sm text-ink-soft">
             <b className="font-medium text-charcoal">48-hour</b> delivery <span className="mx-2 text-gold">•</span>
             <b className="font-medium text-charcoal">Free</b> hosting <span className="mx-2 text-gold">•</span> RSVP included
           </p>
+        </div>
+
+        {/* One real preview on phones, where most visitors arrive from WhatsApp */}
+        <div aria-hidden="true" className="relative mx-auto w-full max-w-xs lg:hidden">
+          <div className="absolute inset-x-4 bottom-0 top-8 rounded-[2.5rem] bg-blush" />
+          <InvitationPreview invitation={center} priority sizes="240px" className="relative mx-auto w-44" />
         </div>
 
         {/* Real invitation screenshots, desktop only to keep the mobile first screen focused on the CTA */}

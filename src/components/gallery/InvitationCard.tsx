@@ -31,14 +31,14 @@ export function InvitationCard({ invitation, priority = false }: { invitation: I
         <span className="font-semibold text-gold-deep">{formatPrice(invitation.price)}</span>
         <span className="ml-1 text-xs text-ink-soft">/ one-time</span>
       </p>
-      <div className="mt-5 flex w-full flex-col gap-2.5">
+      <div className="mt-5 flex w-full flex-col-reverse gap-2.5">
         {invitation.url && (
-          <ButtonLink href={invitation.url} variant="outline" size="sm">
+          <ButtonLink href={invitation.url} variant="link" size="sm">
             View invitation <ExternalLink className="size-4" aria-hidden="true" />
             <span className="sr-only">(opens in a new tab)</span>
           </ButtonLink>
         )}
-        <ButtonLink href={designEnquiryLink(name)} size="sm" data-design={name}>
+        <ButtonLink href={designEnquiryLink(name, categoryLabel[invitation.category], invitation.price)} variant="whatsapp" size="sm" data-design={name}>
           <WhatsAppIcon className="size-4" /> Customize This Design
         </ButtonLink>
       </div>

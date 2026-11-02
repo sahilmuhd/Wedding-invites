@@ -71,6 +71,7 @@ export function Header() {
           onClick={(e) => handleNavClick(e, "#top")}
           className="font-serif text-2xl font-medium tracking-tight text-charcoal transition-colors hover:text-gold-deep"
         >
+          <span aria-hidden="true" className="mr-2.5 inline-grid size-8 place-items-center rounded-lg bg-charcoal align-middle text-lg italic text-gold">{brand.name[0]}</span>
           {brand.name}
         </a>
         <nav aria-label="Primary" className="hidden items-center gap-8 md:flex">

@@ -1109,7 +1109,9 @@
   "posterSize": [
    480,
    1039
-  ]
+  ],
+  "hidden": true,
+  "duplicateOf": "gokul-greeshma"
  },
  {
   "id": "fakrudeen-bawa-rukiya",
@@ -1417,7 +1419,9 @@
   "posterSize": [
    480,
    1039
-  ]
+  ],
+  "hidden": true,
+  "duplicateOf": "ayoob-fathima"
  },
  {
   "id": "nithin-daya",

@@ -1,4 +1,4 @@
-# The Wedding Edit
+# Serein Atelier
 
 Next.js (App Router) · React · TypeScript · Tailwind CSS 4 · Lucide · next/image.
 
@@ -24,4 +24,4 @@ npm run build && npm start
 ## Real previews
 `npm i -D playwright && npx playwright install chromium && npm run capture` takes phone-size screenshots of every
 invitation and fills in `poster`. Use `npm run capture -- --only id1,id2` to retake some.
-Don't re-run `npm run data` afterwards: it regenerates the JSON from `legacy/` and would drop captured posters.
+`npm run data` is now guarded and needs `-- --force`: it regenerates the JSON from `legacy/` and would drop captured posters and manual edits (e.g. hidden duplicates).

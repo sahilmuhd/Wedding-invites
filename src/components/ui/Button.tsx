@@ -1,12 +1,13 @@
 import type { AnchorHTMLAttributes } from "react";
 
-type Variant = "solid" | "outline" | "whatsapp" | "light";
+type Variant = "solid" | "outline" | "whatsapp" | "light" | "link";
 
 const styles: Record<Variant, string> = {
   solid: "bg-charcoal text-ivory hover:bg-black border border-charcoal",
   outline: "border border-charcoal/30 text-charcoal hover:border-charcoal hover:bg-charcoal hover:text-ivory",
-  whatsapp: "bg-charcoal text-ivory hover:bg-black border border-charcoal",
+  whatsapp: "bg-[#17794a] text-white hover:bg-[#0f5f39] border border-[#17794a] hover:border-[#0f5f39]",
   light: "bg-ivory text-charcoal hover:bg-beige border border-ivory",
+  link: "border border-transparent text-ink-soft underline decoration-gold underline-offset-4 hover:text-charcoal",
 };
 
 interface Props extends AnchorHTMLAttributes<HTMLAnchorElement> {
