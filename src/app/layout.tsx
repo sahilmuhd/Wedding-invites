@@ -7,19 +7,10 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { FloatingWhatsApp } from "@/components/layout/FloatingWhatsApp";
 
-const serif = localFont({
-  src: [
-    { path: "../fonts/cormorant-garamond-latin-wght-normal.woff2", style: "normal", weight: "300 700" },
-    { path: "../fonts/cormorant-garamond-latin-wght-italic.woff2", style: "italic", weight: "300 700" },
-  ],
-  variable: "--font-cormorant",
-  display: "swap",
-});
-
-const sans = localFont({
-  src: "../fonts/jost-latin-wght-normal.woff2",
+const inter = localFont({
+  src: "../fonts/inter-latin-wght-normal.woff2",
   weight: "100 900",
-  variable: "--font-jost",
+  variable: "--font-inter",
   display: "swap",
 });
 
@@ -39,11 +30,11 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image", title: brand.name, description: brand.description, images: ["/og.jpg"] },
 };
 
-export const viewport: Viewport = { themeColor: "#faf7f2", width: "device-width", initialScale: 1 };
+export const viewport: Viewport = { themeColor: "#ffffff", width: "device-width", initialScale: 1 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${serif.variable} ${sans.variable}`}>
+    <html lang="en" className={inter.variable}>
       <body className="antialiased">
         <a
           href="#main"

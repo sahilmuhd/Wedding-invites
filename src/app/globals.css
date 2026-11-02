@@ -1,16 +1,17 @@
 @import "tailwindcss";
 
 @theme {
-  --color-ivory: #faf7f2;
-  --color-gold: #c6a77a;
-  --color-gold-deep: #765b32; /* darker gold for text on ivory (contrast ≥ 4.5:1) */
-  --color-charcoal: #282420;
-  --color-beige: #ede4d8;
-  --color-blush: #f2e7e4;
-  --color-ink-soft: #5d554c; /* muted body text on ivory */
+  /* Token names are kept from the old theme; the values below are the modern palette. */
+  --color-ivory: #ffffff; /* page background */
+  --color-gold: #8b7bff; /* light accent: decoration, and text on dark sections */
+  --color-gold-deep: #4636b8; /* accent for text/icons on white (contrast ≥ 7:1) */
+  --color-charcoal: #111827;
+  --color-beige: #f1f3f7; /* light surfaces and borders */
+  --color-blush: #f4f2ff; /* soft accent tint */
+  --color-ink-soft: #4b5563; /* muted body text on white */
 
-  --font-serif: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
-  --font-sans: var(--font-jost), "Jost", system-ui, sans-serif;
+  --font-serif: var(--font-inter), "Inter", system-ui, sans-serif; /* headings now use the same family */
+  --font-sans: var(--font-inter), "Inter", system-ui, sans-serif;
 }
 
 @layer base {
@@ -30,6 +31,13 @@
     outline-offset: 3px;
     border-radius: 2px;
   }
+  h1, h2, h3 {
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  h1 em, h2 em, h3 em {
+    font-style: normal;
+  }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
@@ -38,10 +46,10 @@
 
 @layer components {
   .eyebrow {
-    @apply text-[0.72rem] font-medium uppercase tracking-[0.28em] text-gold-deep;
+    @apply text-[0.74rem] font-semibold uppercase tracking-[0.16em] text-gold-deep;
   }
   .heading {
-    @apply font-serif font-medium leading-[1.05] tracking-tight text-charcoal;
+    @apply font-sans font-semibold leading-[1.08] tracking-tight text-charcoal;
   }
   .gold-rule {
     @apply block h-px w-12 bg-gold;

@@ -9,7 +9,7 @@ export function Footer() {
       <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-8 md:grid-cols-[1.4fr_1fr_1fr]">
         <div>
           <p className="font-serif text-3xl text-ivory">{brand.name}</p>
-          <p className="mt-2 font-serif text-lg italic text-gold">{brand.tagline}</p>
+          <p className="mt-2 text-lg text-gold">{brand.tagline}</p>
           <p className="mt-5 max-w-sm text-sm leading-relaxed">{brand.description}</p>
         </div>
         <nav aria-label="Footer">

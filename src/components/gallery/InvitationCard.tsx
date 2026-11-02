@@ -9,38 +9,50 @@ import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 
 export function InvitationCard({ invitation, priority = false }: { invitation: Invitation; priority?: boolean }) {
   const name = displayName(invitation);
-  const preview = <InvitationPreview invitation={invitation} priority={priority} className="mx-auto w-[min(62vw,13.5rem)] transition-transform duration-500 group-hover:-translate-y-1.5" />;
+  const preview = (
+    <div className="rounded-2xl bg-blush px-6 pb-0 pt-7">
+      <InvitationPreview
+        invitation={invitation}
+        priority={priority}
+        className="mx-auto w-[min(56vw,12rem)] translate-y-0 transition-transform duration-300 group-hover:-translate-y-1"
+      />
+    </div>
+  );
   return (
-    <article className="group flex flex-col items-center rounded-3xl border border-beige bg-white/50 p-5 pb-6 text-center transition-shadow duration-300 hover:shadow-[0_18px_50px_-24px_rgba(40,36,32,0.35)]">
-      {invitation.url ? (
-        <a
-          href={invitation.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block w-full"
-        >
-          {preview}
-          <span className="sr-only">Open the {name} invitation in a new tab</span>
-        </a>
-      ) : (
-        preview
-      )}
-      <p className="eyebrow mt-6 !text-[0.66rem]">{categoryLabel[invitation.category]}</p>
-      <h3 className="heading mt-1.5 text-[1.65rem]">{name}</h3>
-      <p className="mt-2 text-sm">
-        <span className="font-semibold text-gold-deep">{formatPrice(invitation.price)}</span>
-        <span className="ml-1 text-xs text-ink-soft">/ one-time</span>
-      </p>
-      <div className="mt-5 flex w-full flex-col-reverse gap-2.5">
-        {invitation.url && (
-          <ButtonLink href={invitation.url} variant="link" size="sm">
-            View invitation <ExternalLink className="size-4" aria-hidden="true" />
-            <span className="sr-only">(opens in a new tab)</span>
-          </ButtonLink>
+    <article className="group flex h-full flex-col rounded-3xl border border-beige bg-white p-3 transition-shadow duration-300 hover:shadow-[0_16px_40px_-20px_rgba(17,24,39,0.3)]">
+      <div className="overflow-hidden rounded-2xl">
+        {invitation.url ? (
+          <a href={invitation.url} target="_blank" rel="noopener noreferrer" className="block">
+            {preview}
+            <span className="sr-only">Open the {name} invitation in a new tab</span>
+          </a>
+        ) : (
+          preview
         )}
-        <ButtonLink href={designEnquiryLink(name, categoryLabel[invitation.category], invitation.price)} variant="whatsapp" size="sm" data-design={name}>
-          <WhatsAppIcon className="size-4" /> Customize This Design
-        </ButtonLink>
+      </div>
+      <div className="flex flex-1 flex-col px-2 pb-2 pt-4">
+        <h3 className="text-lg leading-snug">{name}</h3>
+        <p className="mt-1 flex items-center gap-2 text-sm text-ink-soft">
+          <span>{categoryLabel[invitation.category]}</span>
+          <span aria-hidden="true" className="text-beige">|</span>
+          <span className="font-semibold text-charcoal">{formatPrice(invitation.price)}</span>
+        </p>
+        <div className="mt-auto flex flex-col-reverse gap-1.5 pt-4">
+          {invitation.url && (
+            <ButtonLink href={invitation.url} variant="link" size="sm">
+              View invitation <ExternalLink className="size-4" aria-hidden="true" />
+              <span className="sr-only">(opens in a new tab)</span>
+            </ButtonLink>
+          )}
+          <ButtonLink
+            href={designEnquiryLink(name, categoryLabel[invitation.category], invitation.price)}
+            variant="whatsapp"
+            size="sm"
+            data-design={name}
+          >
+            <WhatsAppIcon className="size-4" /> Customize This Design
+          </ButtonLink>
+        </div>
       </div>
     </article>
   );

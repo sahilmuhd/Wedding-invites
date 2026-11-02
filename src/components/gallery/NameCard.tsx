@@ -11,7 +11,7 @@ export function NameCard({ invitation }: { invitation: Invitation }) {
     <div className="flex h-full w-full flex-col items-center justify-between bg-[linear-gradient(180deg,var(--color-blush),var(--color-beige))] px-5 py-9 text-center">
       <span className="text-[0.62rem] uppercase tracking-[0.3em] text-gold-deep">{categoryLabel[category]}</span>
       <div>
-        <span aria-hidden="true" className="font-serif text-6xl italic text-gold">{initials(invitation)}</span>
+        <span aria-hidden="true" className="text-6xl font-semibold text-gold">{initials(invitation)}</span>
         <span className="gold-rule mx-auto my-4" />
         {bride && groom ? (
           <p className="font-serif text-[1.55rem] leading-tight text-charcoal">
