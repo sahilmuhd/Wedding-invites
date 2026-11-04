@@ -29,7 +29,7 @@ export function Demo() {
         />
         <ul className="mt-14 flex flex-col items-center justify-center gap-12 sm:flex-row sm:items-start sm:gap-16">
           {demos.map((d) => (
-            <li key={d.src} className="w-[min(70vw,15rem)] text-center">
+            <li key={d.src} className="w-[min(86vw,22rem)] text-center">
               <PhoneFrame aspect="aspect-[9/16]">
                 <video
                   className="h-full w-full object-cover"
