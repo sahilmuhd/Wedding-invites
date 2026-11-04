@@ -1,4 +1,5 @@
 import { Hero } from "@/components/sections/Hero";
+import { Demo } from "@/components/sections/Demo";
 import { Featured } from "@/components/sections/Featured";
 import { GallerySection } from "@/components/gallery/GallerySection";
 import { WhyChoose } from "@/components/sections/WhyChoose";
@@ -28,6 +29,7 @@ export default function Home() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
       <Hero />
+      <Demo />
       <Featured />
       <GallerySection />
       <WhyChoose />

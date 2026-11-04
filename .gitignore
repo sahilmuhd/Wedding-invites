@@ -4,3 +4,8 @@ out
 *.tsbuildinfo
 next-env.d.ts
 .env*.local
+
+# raw phone recordings (compressed copies live in public/videos)
+/IMG_*.MP4
+/IMG_*.mp4
+/IMG_*.MOV
