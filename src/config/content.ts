@@ -2,7 +2,7 @@ import { Palette, Zap, CheckCheck, MapPin, Music2, Images, Timer, Smartphone, ty
 
 export const features: { icon: LucideIcon; title: string; text: string }[] = [
   { icon: Palette, title: "Personalised design", text: "Made around your colours, photos and culture." },
-  { icon: Zap, title: "48-hour delivery", text: "Share your reference today, get your link in 2 days." },
+  { icon: Zap, title: "24-hour delivery", text: "Share your details today, get your link within 24 hours." },
   { icon: CheckCheck, title: "RSVP included", text: "Guests confirm attendance right on the page." },
   { icon: MapPin, title: "Location maps", text: "One-tap Google Maps directions for every venue." },
   { icon: Music2, title: "Music", text: "Your favourite song plays as they open it." },
@@ -13,18 +13,22 @@ export const features: { icon: LucideIcon; title: string; text: string }[] = [
 
 export const steps = [
   { title: "Choose a design", text: "Browse the gallery and open any invitation to see it live." },
-  { title: "Share your details", text: "Send your reference, names, date, venue and photos on WhatsApp." },
-  { title: "Receive your invitation link", text: "Get your personal link in about 48 hours, ready to share with one tap." },
+  { title: "Share your details", text: "Send names, date, venue and photos on WhatsApp, and pay a ₹200 advance to reserve your slot." },
+  { title: "Receive your invitation link", text: "Get your personal link within 24 hours. Approve the preview, pay the balance, and share it with one tap." },
 ] as const;
 
 export const faqs = [
   {
     q: "How long does it take to receive my invitation?",
-    a: "Delivery takes 48 hours. Share your reference today and you receive your link in 2 days.",
+    a: "Delivery is within 24 hours of receiving your details and the ₹200 advance.",
   },
   {
     q: "How do I order?",
     a: "Pick a design from the gallery and tap “Customize This Design”. It opens WhatsApp with the design name filled in, and you can share your details there.",
+  },
+  {
+    q: "How does payment work?",
+    a: "You pay a ₹200 advance by UPI to reserve your slot. It is adjusted in your total. The balance is paid after you approve the preview, and your invitation is finalised once it is received.",
   },
   {
     q: "What does my invitation include?",

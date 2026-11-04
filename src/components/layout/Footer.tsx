@@ -29,7 +29,7 @@ export function Footer() {
           <a href={generalEnquiryLink()} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex min-h-11 items-center gap-2 text-ivory hover:text-gold">
             <WhatsAppIcon className="size-5" /> {brand.phoneDisplay}
           </a>
-          <p className="mt-2 text-sm">WhatsApp us your reference — your link arrives in 48 hours.</p>
+          <p className="mt-2 text-sm">WhatsApp us your details — your link arrives within 24 hours.</p>
         </div>
       </div>
       <div className="border-t border-ivory/10 py-6 text-center text-xs text-ivory/60">

@@ -19,7 +19,7 @@ export function Hero() {
           </h1>
           <p className="mt-6 max-w-lg text-lg leading-relaxed text-ink-soft">
             Personalised digital wedding invitation websites — with music, a live countdown, maps and RSVP —
-            shared with a single link and delivered in 48 hours.
+            shared with a single link and delivered in 24 hours.
           </p>
           <p className="mt-6 font-serif text-2xl text-charcoal">
             From <span className="text-gold-deep">{formatPrice(startingPrice)}</span>
@@ -34,7 +34,7 @@ export function Hero() {
             </ButtonLink>
           </div>
           <p className="mt-8 text-sm text-ink-soft">
-            <b className="font-medium text-charcoal">48-hour</b> delivery <span className="mx-2 text-gold">•</span>
+            <b className="font-medium text-charcoal">24-hour</b> delivery <span className="mx-2 text-gold">•</span>
             <b className="font-medium text-charcoal">Free</b> hosting <span className="mx-2 text-gold">•</span> RSVP included
           </p>
         </div>

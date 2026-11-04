@@ -17,14 +17,14 @@ export interface PricingPlan {
 export const pricing = {
   currency: "₹",
   locale: "en-IN",
-  deliveryTime: "48 hours",
+  deliveryTime: "24 hours",
   plans: [
     {
       id: "classic",
       name: "Classic / Starter",
       price: 999,
       tagline: "Essential digital invitation for single-event celebrations.",
-      deliveryTime: "48 hours",
+      deliveryTime: "24 hours",
       features: [
         "Single-event digital invitation website",
         "Personalized colors, photos & event story",
@@ -42,7 +42,7 @@ export const pricing = {
       popular: true,
       badge: "Best Value",
       tagline: "Our most popular complete package with RSVP & photo gallery.",
-      deliveryTime: "48 hours",
+      deliveryTime: "24 hours",
       features: [
         "Everything in Classic, plus:",
         "Interactive online RSVP attendance tracking",
@@ -51,22 +51,6 @@ export const pricing = {
         "Host & venue coordinator quick-call button",
         "Event itinerary schedule & dress code guide",
         "2 rounds of customizations & revisions",
-      ],
-    },
-    {
-      id: "grand-suite",
-      name: "Multi-Event Grand Suite",
-      price: 2499,
-      tagline: "For big celebrations with multiple functions & ceremonies.",
-      deliveryTime: "24–48 hours",
-      features: [
-        "Everything in Premium, plus:",
-        "Multi-event timeline (Haldi, Mehendi, Sangeet, Wedding, Reception)",
-        "Separate venue maps & timings for each function",
-        "Personalized digital Save-the-Date image card",
-        "Digital guestbook for wishes & blessings",
-        "Optional custom domain setup (e.g. couple.com)",
-        "Priority 24h express delivery & VIP WhatsApp concierge",
       ],
     },
   ] satisfies PricingPlan[],

@@ -17,7 +17,7 @@ export function Pricing() {
           text="One-time investment. Free hosting, no monthly fees, and no surprise add-ons."
         />
 
-        <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 lg:items-stretch">
+        <div className="mx-auto mt-16 grid max-w-4xl grid-cols-1 gap-8 md:grid-cols-2 md:items-stretch">
           {pricing.plans.map((plan) => (
             <div
               key={plan.id}
@@ -75,8 +75,14 @@ export function Pricing() {
           ))}
         </div>
 
-        <p className="mt-12 text-center text-sm text-ink-soft">
-          Need a completely bespoke concept or rush 24h delivery?{" "}
+        <p className="mx-auto mt-10 max-w-2xl text-center text-sm leading-relaxed text-ink-soft">
+          <b className="font-medium text-charcoal">How payment works:</b> a ₹200 advance reserves your slot and is
+          adjusted in your total. The balance is paid after you approve the preview. Delivery is within 24 hours of
+          receiving your details and the advance.
+        </p>
+
+        <p className="mt-6 text-center text-sm text-ink-soft">
+          Need a completely custom concept?{" "}
           <a
             href={customEnquiryLink()}
             className="font-medium text-charcoal underline underline-offset-4 hover:text-gold-deep"
