@@ -1,4 +1,4 @@
-# Serein Atelier
+# weddingwebsites
 
 Next.js (App Router) · React · TypeScript · Tailwind CSS 4 · Lucide · next/image.
 

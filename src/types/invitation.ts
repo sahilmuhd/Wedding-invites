@@ -7,6 +7,9 @@ export type CategoryKey =
   | "Housewarming"
   | "Wedding";
 
+/** Gallery chip filter. "More" = Engagement, Reception and Housewarming. */
+export type FilterKey = "All" | "Nikah" | "Hindu" | "Christian" | "More";
+
 /** How the category was determined (see scripts/build-data.mjs). */
 export type CategorySource =
   | "url"
@@ -18,6 +21,8 @@ export type CategorySource =
 
 export interface Invitation {
   id: string;
+  /** Optional design name shown instead of the couple's names. */
+  title?: string;
   bride: string;
   groom: string;
   category: CategoryKey;
@@ -31,4 +36,14 @@ export interface Invitation {
   featured?: number;
   hidden?: boolean;
   duplicateOf?: string;
+}
+
+/** What the browser receives for each design: no build-only fields. */
+export interface DesignItem {
+  id: string;
+  name: string;
+  category: CategoryKey;
+  url: string | null;
+  poster: string | null;
+  posterSize?: [number, number];
 }

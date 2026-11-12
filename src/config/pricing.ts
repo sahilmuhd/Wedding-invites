@@ -1,60 +1,50 @@
 /**
  * Pricing plans shown in the Pricing section. Edit here to change them.
- * Gallery cards use the per-invitation `price` in src/data/invitations.generated.json,
- * which should match one of the plan prices below.
+ * Only confirmed features are listed.
  */
 export interface PricingPlan {
-  id: string;
+  id: "classic" | "premium";
   name: string;
   price: number;
-  badge?: string;
   popular?: boolean;
-  tagline: string;
-  deliveryTime: string;
   features: string[];
 }
 
 export const pricing = {
   currency: "₹",
   locale: "en-IN",
+  advance: 200,
   deliveryTime: "24 hours",
   plans: [
     {
       id: "classic",
-      name: "Classic / Starter",
+      name: "Classic",
       price: 999,
-      tagline: "Essential digital invitation for single-event celebrations.",
-      deliveryTime: "24 hours",
       features: [
-        "Single-event digital invitation website",
-        "Personalized colors, photos & event story",
-        "Background song of your choice",
-        "One-tap Google Maps venue directions",
-        "Live wedding countdown timer",
-        "Mobile-optimized for easy WhatsApp sharing",
-        "Free lifetime hosting & personal link",
+        "Personalised invitation website",
+        "Background music",
+        "Live countdown",
+        "One-tap Google Maps",
       ],
     },
     {
       id: "premium",
-      name: "Premium Experience",
+      name: "Premium",
       price: 1499,
       popular: true,
-      badge: "Best Value",
-      tagline: "Our most popular complete package with RSVP & photo gallery.",
-      deliveryTime: "24 hours",
-      features: [
-        "Everything in Classic, plus:",
-        "Interactive online RSVP attendance tracking",
-        "Pre-wedding photo & video gallery (up to 20 photos)",
-        "Add to Google Calendar & Apple Calendar button",
-        "Host & venue coordinator quick-call button",
-        "Event itinerary schedule & dress code guide",
-        "2 rounds of customizations & revisions",
-      ],
+      features: ["Everything in Classic, plus:", "RSVP", "Photo gallery", "Add to calendar"],
     },
   ] satisfies PricingPlan[],
 } as const;
+
+/*
+ * TODO(owner): these were on the old site but are not confirmed. Add back to a plan only if guaranteed.
+ *   - "Host & venue coordinator quick-call button"
+ *   - "Event itinerary schedule & dress code guide"
+ *   - "2 rounds of customizations & revisions"
+ *   - "Pre-wedding photo & video gallery (up to 20 photos)"
+ *   - "Free lifetime hosting & personal link"
+ */
 
 /** Lowest plan price, so "From ₹…" can never drift from the plans. */
 export const startingPrice = Math.min(...pricing.plans.map((p) => p.price));
@@ -62,4 +52,3 @@ export const startingPrice = Math.min(...pricing.plans.map((p) => p.price));
 export function formatPrice(amount: number): string {
   return `${pricing.currency}${amount.toLocaleString(pricing.locale)}`;
 }
-

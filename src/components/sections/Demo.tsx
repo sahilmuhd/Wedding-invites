@@ -1,52 +1,30 @@
+import { demo } from "@/config/content";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { PhoneFrame } from "@/components/ui/PhoneFrame";
+import { DemoVideo } from "./DemoVideo";
 
-const demos = [
-  {
-    src: "/videos/demo-nikah-1.mp4",
-    poster: "/videos/demo-nikah-1-poster.jpg",
-    title: "Wax-seal opening",
-    text: "A sealed envelope unfolds into the invitation, with the date and venue.",
-  },
-  {
-    src: "/videos/demo-nikah-2.mp4",
-    poster: "/videos/demo-nikah-2-poster.jpg",
-    title: "Arched doors and save the date",
-    text: "Doors open onto the couple, music and a smooth scroll through the details.",
-  },
-] as const;
-
+/** Two real screen recordings. Swipeable one-at-a-time on phones, side by side on desktop. */
 export function Demo() {
   return (
-    <section id="demo" aria-labelledby="demo-title" className="bg-beige/50 py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-4 sm:px-8">
-        <SectionHeading
-          id="demo-title"
-          align="center"
-          eyebrow="See it in action"
-          title={<>This is what your guests <em className="text-gold-deep">see</em>.</>}
-          text="Real invitations, recorded on a phone. Tap play, and turn the sound on for the music."
-        />
-        <ul className="mt-14 flex flex-col items-center justify-center gap-12 sm:flex-row sm:items-start sm:gap-16">
-          {demos.map((d) => (
-            <li key={d.src} className="w-[min(86vw,22rem)] text-center">
-              <PhoneFrame aspect="aspect-[9/16]">
-                <video
-                  className="h-full w-full object-cover"
-                  src={d.src}
-                  poster={d.poster}
-                  controls
-                  playsInline
-                  preload="none"
-                  aria-label={d.title}
-                />
-              </PhoneFrame>
-              <h3 className="mt-6 text-lg">{d.title}</h3>
-              <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">{d.text}</p>
-            </li>
-          ))}
-        </ul>
+    <section id="demo" aria-labelledby="demo-title" className="section bg-maroon-tint">
+      <div className="container-page" data-reveal>
+        <SectionHeading id="demo-title" align="center" title={demo.title} text={demo.text} />
       </div>
+      <ul
+        aria-label="Demo videos"
+        className="no-scrollbar mt-10 flex snap-x snap-mandatory gap-6 overflow-x-auto px-[calc((100vw-min(78vw,20rem))/2)] md:mt-14 md:justify-center md:gap-16 md:overflow-visible md:px-0"
+        data-reveal
+      >
+        {demo.videos.map((d) => (
+          <li key={d.src} className="w-[min(78vw,20rem)] shrink-0 snap-center text-center">
+            <PhoneFrame aspect="aspect-[9/16]">
+              <DemoVideo src={d.src} poster={d.poster} title={d.title} />
+            </PhoneFrame>
+            <h3 className="mt-5 text-xl">{d.title}</h3>
+            <p className="mt-1 text-sm text-ink-soft">{d.text}</p>
+          </li>
+        ))}
+      </ul>
     </section>
   );
 }

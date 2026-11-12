@@ -1,4 +1,16 @@
 import { brand } from "@/config/brand";
+import { formatPrice } from "@/config/pricing";
+
+/** Where a WhatsApp tap came from (analytics `location`). */
+export type CtaLocation =
+  | "header"
+  | "hero"
+  | "sheet"
+  | "pricing-classic"
+  | "pricing-premium"
+  | "closing"
+  | "bar"
+  | "empty-state";
 
 /** Build a wa.me link with a properly encoded message. */
 export function whatsappLink(message: string): string {
@@ -6,22 +18,10 @@ export function whatsappLink(message: string): string {
 }
 
 export const generalEnquiryLink = () =>
-  whatsappLink(`Hello ${brand.name}, I'd like to create a wedding invitation. Please share more details.`);
+  whatsappLink(`Hi ${brand.name}! I'd like a wedding invitation website. Our event date is: `);
 
-export const customEnquiryLink = () =>
-  whatsappLink(
-    `Hello ${brand.name}, I'd like a completely custom invitation (or rush 24h delivery). Please share the details and pricing.`,
-  );
+export const designEnquiryLink = (design: string, category: string) =>
+  whatsappLink(`Hi ${brand.name}! I'd like to book the "${design}" design (${category}). Our event date is: `);
 
-export const designEnquiryLink = (designName: string, category?: string, price?: number) =>
-  whatsappLink(
-    `Hello ${brand.name}, I'm interested in customizing the ${designName}${category ? ` (${category})` : ""} invitation${
-      price ? ` listed at ₹${price.toLocaleString("en-IN")}` : ""
-    }. Please share more details.`,
-  );
-
-export const packageEnquiryLink = (packageName: string, price: number) =>
-  whatsappLink(
-    `Hello ${brand.name}, I would like to book the ${packageName} package (₹${price.toLocaleString("en-IN")}) for our wedding invitation website. Please let me know the details needed!`,
-  );
-
+export const planEnquiryLink = (plan: string, price: number) =>
+  whatsappLink(`Hi ${brand.name}! I'd like the ${plan} plan (${formatPrice(price)}). Our event date is: `);
