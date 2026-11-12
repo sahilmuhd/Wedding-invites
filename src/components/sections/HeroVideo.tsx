@@ -3,16 +3,17 @@
 import { useEffect, useState } from "react";
 
 /**
- * Muted wax-seal loop laid over the poster image (the poster is the LCP element and renders first).
- * Starts only after the page has loaded; skipped for reduced motion or data saver.
+ * Muted loop laid over its still image (the still renders first).
+ * Starts only after the page has loaded, only when `media` matches the screen,
+ * and never for reduced motion or data saver.
  */
-export function HeroVideo({ src }: { src: string }) {
+export function HeroVideo({ src, media }: { src: string; media: string }) {
   const [play, setPlay] = useState(false);
 
   useEffect(() => {
     const conn = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
     if (
-      !window.matchMedia("(min-width: 768px)").matches || // desktop only
+      !window.matchMedia(media).matches ||
       window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
       conn?.saveData
     )
@@ -21,7 +22,7 @@ export function HeroVideo({ src }: { src: string }) {
     if (document.readyState === "complete") start();
     else window.addEventListener("load", start, { once: true });
     return () => window.removeEventListener("load", start);
-  }, []);
+  }, [media]);
 
   if (!play) return null;
   return (

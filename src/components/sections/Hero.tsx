@@ -25,17 +25,31 @@ export function Hero() {
   return (
     <section id="top" aria-labelledby="hero-title" className="relative overflow-hidden">
       <div className="container-page grid items-center gap-8 pb-16 pt-7 md:grid-cols-[1.1fr_1fr] md:gap-12 md:pb-[120px] md:pt-20">
-        <div>
+        <div className="min-w-0">
           <p className="eyebrow">{hero.eyebrow}</p>
-          <h1 id="hero-title" className="mt-3 text-[40px] leading-[44px] text-balance md:mt-5 md:text-[64px] md:leading-[70px]">
-            <RichTitle t={hero.title} />
-          </h1>
+          <div className="mt-3 flex items-center gap-4 md:mt-5 md:block">
+            <h1 id="hero-title" className="min-w-0 flex-1 text-[40px] leading-[44px] text-balance md:text-[64px] md:leading-[70px]">
+              <RichTitle t={hero.title} />
+            </h1>
+            {/* Phones only: the couple in a round "wax seal" medallion beside the headline. */}
+            <div
+              aria-hidden="true"
+              className="relative size-[112px] shrink-0 overflow-hidden rounded-full border-2 border-maroon bg-white shadow-[0_0_0_4px_#fff,0_0_0_5px_rgba(90,20,36,0.25),0_14px_30px_-14px_rgba(90,20,36,0.5)] md:hidden"
+            >
+              <picture>
+                <source media="(max-width: 767px)" srcSet="/videos/hero-medallion.jpg" />
+                <img src={BLANK} alt="" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
+              </picture>
+              <HeroVideo src="/videos/hero-medallion.mp4" media="(max-width: 767px)" />
+            </div>
+          </div>
           <p className="mt-4 max-w-[34rem] text-ink-soft md:mt-6 md:text-[17px] md:leading-7">{hero.sub}</p>
-          <p className="mt-4 text-sm text-ink md:mt-6">
+          {/* Each phrase stays whole; the line can break between phrases. */}
+          <p className="mt-4 flex flex-wrap gap-x-1.5 text-sm text-ink md:mt-6">
             {hero.reassurance.map((r, i) => (
-              <span key={r}>
-                {i > 0 && <span aria-hidden="true" className="mx-1.5 text-maroon/40">·</span>}
-                <span className="whitespace-nowrap">{r}</span>
+              <span key={r} className="whitespace-nowrap">
+                {r}
+                {i < hero.reassurance.length - 1 && <span aria-hidden="true" className="ml-1.5 text-maroon/40">·</span>}
               </span>
             ))}
           </p>
@@ -61,7 +75,7 @@ export function Hero() {
               className="absolute inset-0 h-full w-full object-cover"
             />
           </picture>
-          <HeroVideo src="/videos/hero-caricature.mp4" />
+          <HeroVideo src="/videos/hero-caricature.mp4" media="(min-width: 768px)" />
         </PhoneFrame>
       </div>
     </section>
