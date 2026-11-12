@@ -3,6 +3,7 @@ import { Demo } from "@/components/sections/Demo";
 import { Designs } from "@/components/sections/Designs";
 import { Features } from "@/components/sections/Features";
 import { HowItWorks } from "@/components/sections/HowItWorks";
+import { GuestDesk } from "@/components/sections/GuestDesk";
 import { Pricing } from "@/components/sections/Pricing";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { Faq } from "@/components/sections/Faq";
@@ -40,6 +41,7 @@ export default function Home() {
       <Demo />
       <Designs />
       <Features />
+      <GuestDesk />
       <HowItWorks />
       <Pricing />
       <Testimonials />
