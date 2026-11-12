@@ -10,7 +10,8 @@
     "typecheck": "tsc --noEmit",
     "data": "node scripts/build-data.mjs",
     "capture": "node scripts/capture.mjs",
-    "prebuild": "node scripts/check-data.mjs"
+    "prebuild": "node scripts/check-data.mjs",
+    "watermark": "node scripts/watermark.mjs"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",
