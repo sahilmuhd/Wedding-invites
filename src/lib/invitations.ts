@@ -1,18 +1,7 @@
 import raw from "@/data/invitations.generated.json";
-import type { CategoryKey, Invitation } from "@/types/invitation";
+import type { CategoryKey, DesignItem, FilterKey, Invitation } from "@/types/invitation";
 
 const all = raw as Invitation[];
-
-/** Gallery filter tabs, in display order. */
-export const categoryTabs: { key: CategoryKey | "All"; label: string }[] = [
-  { key: "All", label: "All" },
-  { key: "Nikah", label: "Nikah" },
-  { key: "Hindu", label: "Hindu Wedding" },
-  { key: "Christian", label: "Christian Wedding" },
-  { key: "Engagement", label: "Engagement" },
-  { key: "Reception", label: "Reception" },
-  { key: "Housewarming", label: "Housewarming" },
-];
 
 export const categoryLabel: Record<CategoryKey, string> = {
   Nikah: "Nikah",
@@ -21,34 +10,60 @@ export const categoryLabel: Record<CategoryKey, string> = {
   Engagement: "Engagement",
   Reception: "Reception",
   Housewarming: "Housewarming",
-  Wedding: "Wedding",
+  Wedding: "Wedding", // TODO(owner): recategorise these; they only appear under "All".
 };
 
-/** Couple name as shown on cards and used in WhatsApp messages. */
+/** Gallery filter chips, in display order. "More" groups the smaller event types. */
+export const filterTabs: { key: FilterKey; label: string }[] = [
+  { key: "All", label: "All" },
+  { key: "Nikah", label: "Nikah" },
+  { key: "Hindu", label: "Hindu" },
+  { key: "Christian", label: "Christian" },
+  { key: "More", label: "Engagement & more" },
+];
+
+const MORE: CategoryKey[] = ["Engagement", "Reception", "Housewarming"];
+
+export function matchesFilter(category: CategoryKey, filter: FilterKey): boolean {
+  if (filter === "All") return true;
+  if (filter === "More") return MORE.includes(category);
+  return category === filter;
+}
+
+/** Couple name as stored in the data. */
 export function displayName(i: Pick<Invitation, "bride" | "groom">): string {
   return i.bride && i.groom ? `${i.bride} & ${i.groom}` : i.bride || i.groom;
 }
 
-/** Visible invitations; ones with a real screenshot come first so the first page looks its best. */
-export const invitations: Invitation[] = all
-  .filter((i) => !i.hidden)
+const visible = all.filter((i) => !i.hidden);
+
+/** Slim, client-safe list: featured first (in order), then designs with a screenshot. */
+export const designItems: DesignItem[] = visible
   .map((i, idx) => ({ i, idx }))
-  .sort((a, b) => Number(!!b.i.poster) - Number(!!a.i.poster) || a.idx - b.idx)
-  .map(({ i }) => i);
+  .sort(
+    (a, b) =>
+      (a.i.featured ?? 99) - (b.i.featured ?? 99) ||
+      Number(!!b.i.poster) - Number(!!a.i.poster) ||
+      a.idx - b.idx,
+  )
+  .map(({ i }) => ({
+    id: i.id,
+    // TODO(owner): add a `title` per design (e.g. "Wax Seal") if couples haven't consented to their names being shown.
+    name: i.title ?? displayName(i),
+    category: i.category,
+    url: i.url,
+    poster: i.poster,
+    posterSize: i.posterSize,
+  }));
 
-export const featuredInvitations: Invitation[] = all
-  .filter((i) => i.featured)
-  .sort((a, b) => (a.featured ?? 0) - (b.featured ?? 0));
+export const designCount = designItems.length;
 
-const HERO_IDS = ["sanoop-fidha", "vinay-athira", "jishnu-vibha"];
-const curatedHero = HERO_IDS.map((id) => all.find((i) => i.id === id)).filter(
-  (i): i is Invitation => Boolean(i && i.poster),
-);
-export const heroInvitations: Invitation[] =
-  curatedHero.length === 3 ? curatedHero : all.filter((i) => i.poster).slice(0, 3);
+export const filterCounts: Record<FilterKey, number> = Object.fromEntries(
+  filterTabs.map((t) => [t.key, designItems.filter((d) => matchesFilter(d.category, t.key)).length]),
+) as Record<FilterKey, number>;
 
-export function initials(i: Pick<Invitation, "bride" | "groom">): string {
-  const a = (i.bride || i.groom)[0] ?? "";
-  const b = i.bride && i.groom ? i.groom[0] : "";
-  return (a + b).toUpperCase();
-}
+export const PAGE_SIZE = 12;
+export const initialDesigns = designItems.slice(0, PAGE_SIZE);
+
+/** Real screenshots used in the hero / OG image. */
+export const heroPosterId = "sanoop-fidha";

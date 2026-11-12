@@ -1,139 +1,85 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
-import { ArrowRight, Menu, X } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Menu, X } from "lucide-react";
 import { brand, navLinks } from "@/config/brand";
 import { generalEnquiryLink } from "@/lib/whatsapp";
-import { ButtonLink } from "@/components/ui/Button";
+import { LogoMark } from "@/components/ui/Logo";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
+import { WhatsAppLink } from "@/components/ui/WhatsAppLink";
 
 export function Header() {
   const [open, setOpen] = useState(false);
 
-  // Close on Escape or when resizing up to desktop
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false);
-    };
-    const onResize = () => {
-      if (window.innerWidth >= 768) {
-        setOpen(false);
-      }
-    };
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
     window.addEventListener("keydown", onKey);
-    window.addEventListener("resize", onResize);
     return () => {
+      document.body.style.overflow = prev;
       window.removeEventListener("keydown", onKey);
-      window.removeEventListener("resize", onResize);
     };
-  }, []);
-
-  // Lock body scroll when mobile menu is open, restore on close
-  useEffect(() => {
-    if (open) {
-      const prevOverflow = document.body.style.overflow;
-      document.body.style.overflow = "hidden";
-      return () => {
-        document.body.style.overflow = prevOverflow;
-      };
-    }
   }, [open]);
 
-  const handleNavClick = useCallback(
-    (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-      if (href.startsWith("#")) {
-        e.preventDefault();
-        setOpen(false);
-        document.body.style.overflow = "";
-
-        const targetId = href.slice(1);
-        requestAnimationFrame(() => {
-          if (targetId === "top") {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-          } else {
-            const el = document.getElementById(targetId);
-            if (el) {
-              el.scrollIntoView({ behavior: "smooth" });
-            }
-          }
-          window.history.pushState(null, "", href);
-        });
-      }
-    },
-    [],
-  );
+  const close = () => setOpen(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-beige/80 bg-ivory/95 backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-8">
-        <a
-          href="#top"
-          onClick={(e) => handleNavClick(e, "#top")}
-          className="text-xl font-semibold tracking-tight text-charcoal transition-colors hover:text-gold-deep"
-        >
-          <span aria-hidden="true" className="mr-2.5 inline-grid size-8 place-items-center rounded-lg bg-charcoal align-middle text-lg font-semibold text-gold">{brand.name[0]}</span>
-          {brand.name}
+    <header className="sticky top-0 z-50 border-b border-line/70 bg-white/90 backdrop-blur-md">
+      <div className="container-page flex h-14 items-center justify-between gap-3">
+        <a href="#top" onClick={close} className="flex min-h-11 items-center gap-2.5 text-maroon">
+          <LogoMark className="h-[22px] w-auto" animate />
+          <span className="font-serif text-lg italic leading-none">{brand.name}</span>
         </a>
-        <nav aria-label="Primary" className="hidden items-center gap-8 md:flex">
-          {navLinks.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              onClick={(e) => handleNavClick(e, l.href)}
-              className="text-sm font-medium text-ink-soft transition-colors hover:text-charcoal"
-            >
-              {l.label}
-            </a>
-          ))}
-          <ButtonLink href={generalEnquiryLink()} size="sm">
-            <WhatsAppIcon className="size-4" /> WhatsApp
-          </ButtonLink>
-        </nav>
-        <button
-          type="button"
-          className="grid size-11 place-items-center rounded-full text-charcoal transition-colors hover:bg-beige/60 active:bg-beige md:hidden"
-          aria-expanded={open}
-          aria-controls="mobile-menu"
-          aria-label={open ? "Close menu" : "Open menu"}
-          onClick={() => setOpen((o) => !o)}
-        >
-          {open ? <X className="size-6 text-charcoal" /> : <Menu className="size-6 text-charcoal" />}
-        </button>
-      </div>
-      {open && (
-        <div
-          id="mobile-menu"
-          role="dialog"
-          aria-modal="true"
-          aria-label="Navigation menu"
-          className="fixed inset-x-0 top-16 z-50 flex h-[calc(100dvh-4rem)] flex-col justify-between overflow-y-auto border-t border-beige/60 bg-ivory/98 px-6 pb-12 pt-4 shadow-2xl backdrop-blur-lg md:hidden"
-        >
-          <nav aria-label="Mobile" className="flex flex-col divide-y divide-beige/80">
+
+        <div className="flex items-center gap-1 md:gap-6">
+          <nav aria-label="Primary" className="hidden items-center gap-7 md:flex">
             {navLinks.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                onClick={(e) => handleNavClick(e, l.href)}
-                className="group flex items-center justify-between py-4 font-serif text-2xl text-charcoal transition-colors hover:text-gold-deep active:text-gold-deep"
-              >
-                <span>{l.label}</span>
-                <ArrowRight className="size-5 text-gold transition-transform group-hover:translate-x-1 group-active:translate-x-1" />
+              <a key={l.href} href={l.href} className="text-sm text-ink-soft transition-colors hover:text-maroon">
+                {l.label}
               </a>
             ))}
+            <a href={brand.instagramUrl} target="_blank" rel="noopener noreferrer" className="text-sm text-ink-soft transition-colors hover:text-maroon">
+              Instagram
+            </a>
           </nav>
-          <div className="mt-8 border-t border-beige/60 pt-6">
-            <ButtonLink
-              href={generalEnquiryLink()}
-              className="w-full justify-center py-3 text-base"
-              onClick={() => {
-                setOpen(false);
-                document.body.style.overflow = "";
-              }}
-            >
-              <WhatsAppIcon className="size-5" /> Chat on WhatsApp
-            </ButtonLink>
-            <p className="mt-4 text-center text-sm tracking-wide text-ink-soft">{brand.phoneDisplay}</p>
-          </div>
+          <a href="#designs" className="inline-flex min-h-11 items-center px-2 text-sm text-ink md:hidden">
+            Designs
+          </a>
+          <WhatsAppLink
+            href={generalEnquiryLink()}
+            location="header"
+            aria-label="Chat with us on WhatsApp"
+            className="grid size-11 place-items-center rounded-full border border-maroon/30 text-maroon transition-colors hover:border-maroon hover:bg-maroon-tint"
+          >
+            <WhatsAppIcon className="size-[18px]" />
+          </WhatsAppLink>
+          <button
+            type="button"
+            className="grid size-11 place-items-center rounded-full text-maroon md:hidden"
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            aria-label={open ? "Close menu" : "Open menu"}
+            onClick={() => setOpen((o) => !o)}
+          >
+            {open ? <X className="size-6" /> : <Menu className="size-6" />}
+          </button>
+        </div>
+      </div>
+
+      {open && (
+        <div id="mobile-menu" className="fixed inset-x-0 top-14 z-50 h-[calc(100dvh-3.5rem)] bg-white px-5 pt-2 md:hidden">
+          <nav aria-label="Mobile" className="flex flex-col divide-y divide-line">
+            {navLinks.map((l) => (
+              <a key={l.href} href={l.href} onClick={close} className="py-5 font-serif text-2xl text-maroon">
+                {l.label}
+              </a>
+            ))}
+            <a href={brand.instagramUrl} target="_blank" rel="noopener noreferrer" onClick={close} className="py-5 font-serif text-2xl text-maroon">
+              Instagram <span className="font-sans text-base text-ink-soft">{brand.instagramHandle}</span>
+            </a>
+          </nav>
         </div>
       )}
     </header>

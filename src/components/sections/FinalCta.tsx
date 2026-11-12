@@ -1,19 +1,22 @@
-import { generalEnquiryLink } from "@/lib/whatsapp";
+import { closing } from "@/config/content";
 import { brand } from "@/config/brand";
-import { ButtonLink } from "@/components/ui/Button";
+import { generalEnquiryLink } from "@/lib/whatsapp";
+import { buttonClass } from "@/components/ui/Button";
+import { LogoMark } from "@/components/ui/Logo";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
+import { WhatsAppLink } from "@/components/ui/WhatsAppLink";
 
 export function FinalCta() {
   return (
-    <section aria-labelledby="cta-title" className="px-4 pb-24 sm:px-8 sm:pb-32">
-      <div className="mx-auto max-w-5xl rounded-[2rem] bg-blush px-6 py-20 text-center sm:px-16">
-        <h2 id="cta-title" className="heading text-4xl sm:text-6xl">
-          Your Love Story Deserves a <em className="text-gold-deep">Beautiful Beginning.</em>
-        </h2>
-        <p className="mx-auto mt-5 max-w-md text-ink-soft">Message us on WhatsApp and we’ll take it from there.</p>
-        <ButtonLink href={generalEnquiryLink()} className="mt-9">
-          <WhatsAppIcon className="size-5" /> Enquire on WhatsApp · {brand.phoneDisplay}
-        </ButtonLink>
+    <section id="closing" aria-labelledby="closing-title" className="section bg-maroon text-white">
+      <div className="container-page flex flex-col items-center text-center" data-reveal>
+        <LogoMark className="h-10 w-auto text-white" />
+        <h2 id="closing-title" className="h2 mt-6 text-white">{closing.title}</h2>
+        <p className="mt-4 max-w-md text-white/85">{closing.text}</p>
+        <WhatsAppLink href={generalEnquiryLink()} location="closing" className={`${buttonClass("light")} mt-8`}>
+          <WhatsAppIcon className="size-5" /> {closing.cta}
+        </WhatsAppLink>
+        <p className="mt-4 text-sm tracking-wide text-white/85">{brand.phoneDisplay}</p>
       </div>
     </section>
   );

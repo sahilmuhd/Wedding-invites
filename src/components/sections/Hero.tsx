@@ -1,57 +1,56 @@
+import Image from "next/image";
 import { ArrowDown } from "lucide-react";
-import { brand } from "@/config/brand";
+import { hero } from "@/config/content";
 import { generalEnquiryLink } from "@/lib/whatsapp";
-import { heroInvitations, invitations } from "@/lib/invitations";
-import { formatPrice, startingPrice } from "@/config/pricing";
-import { ButtonLink } from "@/components/ui/Button";
-import { InvitationPreview } from "@/components/gallery/InvitationPreview";
+import { designCount } from "@/lib/invitations";
+import { buttonClass } from "@/components/ui/Button";
+import { PhoneFrame } from "@/components/ui/PhoneFrame";
+import { RichTitle } from "@/components/ui/SectionHeading";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
+import { WhatsAppLink } from "@/components/ui/WhatsAppLink";
+import { HeroVideo } from "./HeroVideo";
 
 export function Hero() {
-  const [left, center, right] = heroInvitations;
   return (
-    <section id="top" className="relative overflow-hidden">
-      <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 pb-14 pt-12 sm:px-8 sm:pb-20 lg:grid-cols-[1.05fr_1fr] lg:gap-8 lg:pb-28 lg:pt-20">
+    <section id="top" aria-labelledby="hero-title" className="relative overflow-hidden">
+      <div className="container-page grid items-center gap-8 pb-16 pt-7 md:grid-cols-[1.1fr_1fr] md:gap-12 md:pb-[120px] md:pt-20">
         <div>
-          <p className="eyebrow">{brand.tagline}</p>
-          <h1 className="heading mt-6 text-[2.9rem] sm:text-6xl lg:text-[4.6rem]">
-            Invite them with <em className="text-gold-deep">a story,</em> not a card.
+          <p className="eyebrow">{hero.eyebrow}</p>
+          <h1 id="hero-title" className="mt-3 text-[40px] leading-[44px] text-balance md:mt-5 md:text-[64px] md:leading-[70px]">
+            <RichTitle t={hero.title} />
           </h1>
-          <p className="mt-6 max-w-lg text-lg leading-relaxed text-ink-soft">
-            Personalised digital wedding invitation websites — with music, a live countdown, maps and RSVP —
-            shared with a single link and delivered in 24 hours.
+          <p className="mt-4 max-w-[34rem] text-ink-soft md:mt-6 md:text-[17px] md:leading-7">{hero.sub}</p>
+          <p className="mt-4 text-sm text-ink md:mt-6">
+            {hero.reassurance.map((r, i) => (
+              <span key={r}>
+                {i > 0 && <span aria-hidden="true" className="mx-1.5 text-maroon/40">·</span>}
+                <span className="whitespace-nowrap">{r}</span>
+              </span>
+            ))}
           </p>
-          <p className="mt-6 font-serif text-2xl text-charcoal">
-            From <span className="text-gold-deep">{formatPrice(startingPrice)}</span>
-            <span className="ml-2 text-base text-ink-soft">one-time, no hidden charges</span>
-          </p>
-          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-            <ButtonLink href={generalEnquiryLink()} variant="whatsapp" className="sm:min-w-48">
-              <WhatsAppIcon className="size-4" /> Create Your Invitation
-            </ButtonLink>
-            <ButtonLink href="#gallery" variant="outline" className="sm:min-w-48">
-              Explore {invitations.length}+ Designs <ArrowDown className="size-4" aria-hidden="true" />
-            </ButtonLink>
+          <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 md:mt-8">
+            <WhatsAppLink id="hero-cta" href={generalEnquiryLink()} location="hero" className={`${buttonClass("whatsapp")} w-full sm:w-auto`}>
+              <WhatsAppIcon className="size-5" /> {hero.cta}
+            </WhatsAppLink>
+            <a href="#designs" className="inline-flex min-h-11 items-center gap-1.5 text-sm text-maroon underline decoration-maroon/30 underline-offset-4 hover:decoration-maroon">
+              {hero.secondary} ({designCount}) <ArrowDown className="size-4" aria-hidden="true" />
+            </a>
           </div>
-          <p className="mt-8 text-sm text-ink-soft">
-            <b className="font-medium text-charcoal">24-hour</b> delivery <span className="mx-2 text-gold">•</span>
-            <b className="font-medium text-charcoal">Free</b> hosting <span className="mx-2 text-gold">•</span> RSVP included
-          </p>
         </div>
 
-        {/* One real preview on phones, where most visitors arrive from WhatsApp */}
-        <div aria-hidden="true" className="relative mx-auto w-full max-w-xs lg:hidden">
-          <div className="absolute inset-x-4 bottom-0 top-8 rounded-[2.5rem] bg-blush" />
-          <InvitationPreview invitation={center} priority sizes="240px" className="relative mx-auto w-44" />
-        </div>
-
-        {/* Real invitation screenshots, desktop only to keep the mobile first screen focused on the CTA */}
-        <div aria-hidden="true" className="relative hidden h-[34rem] lg:block">
-          <div className="absolute inset-x-6 bottom-0 top-10 rounded-[3rem] bg-blush" />
-          <InvitationPreview invitation={left} priority sizes="240px" className="absolute left-0 top-20 w-48 -rotate-6" />
-          <InvitationPreview invitation={right} priority sizes="240px" className="absolute right-0 top-20 w-48 rotate-6" />
-          <InvitationPreview invitation={center} priority sizes="280px" className="absolute left-1/2 top-0 w-56 -translate-x-1/2" />
-        </div>
+        <PhoneFrame className="mx-auto w-[220px] md:w-[300px]" aspect="aspect-[480/850]">
+          <Image
+            src="/videos/hero-loop-poster.jpg"
+            alt="A Nikah invitation with a wax seal, about to open"
+            fill
+            preload
+            fetchPriority="high"
+            loading="eager"
+            sizes="(min-width: 768px) 300px, 220px"
+            className="object-cover"
+          />
+          <HeroVideo src="/videos/hero-loop.mp4" />
+        </PhoneFrame>
       </div>
     </section>
   );

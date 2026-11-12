@@ -1,10 +1,10 @@
 import { Hero } from "@/components/sections/Hero";
 import { Demo } from "@/components/sections/Demo";
-import { Featured } from "@/components/sections/Featured";
-import { GallerySection } from "@/components/gallery/GallerySection";
-import { WhyChoose } from "@/components/sections/WhyChoose";
+import { Designs } from "@/components/sections/Designs";
+import { Features } from "@/components/sections/Features";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Pricing } from "@/components/sections/Pricing";
+import { Testimonials } from "@/components/sections/Testimonials";
 import { Faq } from "@/components/sections/Faq";
 import { FinalCta } from "@/components/sections/FinalCta";
 import { faqs } from "@/config/content";
@@ -14,7 +14,15 @@ export default function Home() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
-      { "@type": "Organization", name: brand.name, telephone: brand.phoneDisplay, slogan: brand.tagline },
+      {
+        "@type": "Organization",
+        name: brand.name,
+        url: brand.siteUrl,
+        logo: `${brand.siteUrl}/brand/icon-maroon.svg`,
+        telephone: brand.phoneDisplay,
+        slogan: brand.tagline,
+        sameAs: [brand.instagramUrl],
+      },
       {
         "@type": "FAQPage",
         mainEntity: faqs.map((f) => ({
@@ -30,11 +38,11 @@ export default function Home() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
       <Hero />
       <Demo />
-      <Featured />
-      <GallerySection />
-      <WhyChoose />
+      <Designs />
+      <Features />
       <HowItWorks />
       <Pricing />
+      <Testimonials />
       <Faq />
       <FinalCta />
     </>

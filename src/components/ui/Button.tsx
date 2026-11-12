@@ -1,32 +1,30 @@
 import type { AnchorHTMLAttributes } from "react";
 
-type Variant = "solid" | "outline" | "whatsapp" | "light" | "link";
+export type ButtonVariant = "whatsapp" | "outline" | "light";
 
-const styles: Record<Variant, string> = {
-  solid: "bg-charcoal text-ivory hover:bg-black border border-charcoal",
-  outline: "border border-charcoal/30 text-charcoal hover:border-charcoal hover:bg-charcoal hover:text-ivory",
-  whatsapp: "bg-[#17794a] text-white hover:bg-[#0f5f39] border border-[#17794a] hover:border-[#0f5f39]",
-  light: "bg-ivory text-charcoal hover:bg-beige border border-ivory",
-  link: "border border-transparent text-ink-soft underline decoration-gold underline-offset-4 hover:text-charcoal",
+const styles: Record<ButtonVariant, string> = {
+  // Main action. WhatsApp is signalled by its icon and label, not by green.
+  whatsapp: "bg-maroon text-white hover:bg-maroon-deep active:bg-maroon-deep border border-maroon",
+  outline: "border border-maroon/30 text-maroon hover:border-maroon hover:bg-maroon-tint",
+  // White on maroon, for the closing section.
+  light: "bg-white text-maroon hover:bg-maroon-tint border border-white",
 };
 
+export function buttonClass(variant: ButtonVariant = "whatsapp", size: "sm" | "md" = "md") {
+  return `inline-flex min-h-11 items-center justify-center gap-2 rounded-full font-medium tracking-wide transition-colors duration-200 ${
+    size === "sm" ? "px-4 text-sm" : "min-h-12 px-7 text-base"
+  } ${styles[variant]}`;
+}
+
 interface Props extends AnchorHTMLAttributes<HTMLAnchorElement> {
-  variant?: Variant;
+  variant?: ButtonVariant;
   size?: "sm" | "md";
 }
 
-/** Anchor styled as a button. External links get safe rel/target automatically. */
-export function ButtonLink({ variant = "solid", size = "md", className = "", href, children, ...rest }: Props) {
-  const external = !!href && /^https?:/.test(href);
+/** Anchor styled as a button, for in-page links. WhatsApp links use <WhatsAppLink>. */
+export function ButtonLink({ variant = "outline", size = "md", className = "", children, ...rest }: Props) {
   return (
-    <a
-      href={href}
-      {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-      className={`inline-flex min-h-11 items-center justify-center gap-2 rounded-full font-medium tracking-wide transition-colors duration-200 ${
-        size === "sm" ? "px-4 text-sm" : "px-7 text-[0.95rem]"
-      } ${styles[variant]} ${className}`}
-      {...rest}
-    >
+    <a className={`${buttonClass(variant, size)} ${className}`} {...rest}>
       {children}
     </a>
   );

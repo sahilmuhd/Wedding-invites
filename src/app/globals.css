@@ -1,41 +1,51 @@
 @import "tailwindcss";
 
 @theme {
-  --color-ivory: #faf7f2;
-  --color-gold: #c6a77a;
-  --color-gold-deep: #765b32; /* darker gold for text on ivory (contrast ≥ 4.5:1) */
-  --color-charcoal: #282420;
-  --color-beige: #ede4d8;
-  --color-blush: #f2e7e4;
-  --color-ink-soft: #5d554c; /* muted body text on ivory */
+  --color-maroon: #5a1424;
+  --color-maroon-deep: #3e0d18;
+  --color-maroon-tint: #f6eef0;
+  --color-ink: #241418;
+  --color-ink-soft: #6e5c60; /* ≥ 4.5:1 on white and on maroon-tint */
+  --color-line: #eadfe2;
 
-  --font-serif: var(--font-inter), "Inter", system-ui, sans-serif; /* headings now use the same family */
-  --font-sans: var(--font-inter), "Inter", system-ui, sans-serif;
+  --font-serif: var(--font-playfair), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-jost), system-ui, sans-serif;
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 5rem;
+    scroll-padding-top: 4.5rem;
     -webkit-text-size-adjust: 100%;
   }
   body {
-    background: var(--color-ivory);
-    color: var(--color-charcoal);
+    background: #fff;
+    color: var(--color-ink);
     font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.625;
     overflow-x: clip;
   }
+  /* Room for the mobile booking bar so it never hides content. */
+  @media (max-width: 767px) {
+    body { padding-bottom: calc(4rem + env(safe-area-inset-bottom)); }
+  }
   :focus-visible {
-    outline: 2px solid var(--color-charcoal);
+    outline: 2px solid var(--color-maroon);
     outline-offset: 3px;
     border-radius: 2px;
   }
   h1, h2, h3 {
-    font-weight: 600;
-    letter-spacing: -0.02em;
+    font-family: var(--font-serif);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--color-maroon);
   }
   h1 em, h2 em, h3 em {
-    font-style: normal;
+    font-style: italic;
+    font-weight: 400;
   }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
@@ -45,17 +55,56 @@
 
 @layer components {
   .eyebrow {
-    @apply text-[0.74rem] font-semibold uppercase tracking-[0.16em] text-gold-deep;
+    @apply text-xs font-medium uppercase tracking-[0.18em] text-ink-soft;
   }
-  .heading {
-    @apply font-sans font-semibold leading-[1.08] tracking-tight text-charcoal;
+  .container-page {
+    @apply mx-auto w-full max-w-[1120px] px-5 sm:px-8;
   }
-  .gold-rule {
-    @apply block h-px w-12 bg-gold;
+  .section {
+    @apply py-[72px] md:py-[120px];
+  }
+  .h2 {
+    @apply text-[30px] leading-[36px] md:text-[44px] md:leading-[52px];
   }
 }
+
+/* Reveal on scroll. Only hidden when JS has run (html.js), so no-JS visitors see everything. */
+html.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 400ms var(--ease-out-soft), transform 400ms var(--ease-out-soft);
+}
+html.js [data-reveal].is-in {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  html.js [data-reveal] { transform: none; }
+}
+
+/* Logo heart seal: fades in once on first load. */
+@keyframes seal-in {
+  from { opacity: 0; transform: scale(0.85); }
+  to { opacity: 1; transform: none; }
+}
+.logo-seal {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: seal-in 600ms var(--ease-out-soft) 150ms both;
+}
+
+/* Preview sheet slide-up */
+@keyframes sheet-up {
+  from { transform: translateY(100%); }
+  to { transform: none; }
+}
+.sheet-enter { animation: sheet-up 300ms var(--ease-out-soft); }
 
 /* FAQ accordion marker */
 details > summary { list-style: none; }
 details > summary::-webkit-details-marker { display: none; }
 details[open] .faq-plus { transform: rotate(45deg); }
+
+/* Hide horizontal scrollbars on swipe rows */
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
