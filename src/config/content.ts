@@ -59,6 +59,27 @@ export const steps = [
   { title: "Approve and share.", text: "Your preview is ready in 24 hours. Approve it, pay the balance and share your link." },
 ] as const;
 
+/** Signature plan's guest desk. Screenshots are the real dashboard rendered with sample data. */
+export const guestDesk = {
+  eyebrow: "Signature plan",
+  title: { before: "Know who’s coming. ", em: "Welcome", after: " them at the door." },
+  text: "Your own private guest desk: see every RSVP as it arrives, and check guests in with a quick QR scan on the day.",
+  points: [
+    "Live RSVP list and guest counts for each event",
+    "A QR ticket for every guest, scanned at the door",
+    "A separate staff login for the check-in desk",
+    "Approve guest wishes before they appear",
+  ],
+  screens: [
+    { src: "/guest-desk/overview.webp", caption: "Overview", alt: "Guest desk overview: total RSVPs, expected guests and check-ins per event" },
+    { src: "/guest-desk/checkin.webp", caption: "Check-in at the door", alt: "Check-in screen: camera QR scanner and a guest marked as checked in" },
+    { src: "/guest-desk/guests.webp", caption: "Guest list", alt: "Guest list with search, filters and CSV export" },
+    { src: "/guest-desk/wishes.webp", caption: "Wishes to approve", alt: "Guest wishes waiting for approval" },
+  ],
+  note: "Shown with sample guests.",
+  link: "See the Signature plan",
+} as const;
+
 export const pricingCopy = {
   title: { before: "One-time price. ", em: "No surprises.", after: "" },
   terms: ["₹200 UPI advance to book", "Balance after you approve the preview", "Delivered in 24 hours"],
@@ -79,8 +100,8 @@ export const faqs: { q: string; a: string }[] = [
   },
   { q: "Do guests need an app?", a: "No. It’s one link that opens on any phone." },
   {
-    q: "What’s the difference between Classic and Premium?",
-    a: "Premium adds RSVP, a photo gallery and add-to-calendar.",
+    q: "What’s the difference between the plans?",
+    a: "Premium adds RSVP, a photo gallery and add-to-calendar. Signature adds a private guest desk: a live RSVP list, QR check-in at the door, a staff login and wish approval.",
   },
   // TODO(owner): confirm the hosting period, then add:
   // { q: "How long does my link stay live?", a: "…" },
