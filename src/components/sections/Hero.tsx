@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { getImageProps } from "next/image";
 import { ArrowDown } from "lucide-react";
 import { hero } from "@/config/content";
 import { generalEnquiryLink } from "@/lib/whatsapp";
@@ -9,6 +9,17 @@ import { RichTitle } from "@/components/ui/SectionHeading";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { WhatsAppLink } from "@/components/ui/WhatsAppLink";
 import { HeroVideo } from "./HeroVideo";
+
+/** 1×1 transparent GIF: what phones "load" for the hidden poster. */
+const BLANK = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
+
+const { props: poster } = getImageProps({
+  src: "/videos/hero-caricature-poster.jpg",
+  alt: "",
+  width: 540,
+  height: 960,
+  sizes: "300px",
+});
 
 export function Hero() {
   return (
@@ -38,18 +49,19 @@ export function Hero() {
           </div>
         </div>
 
-        <PhoneFrame className="mx-auto w-[220px] md:w-[300px]" aspect="aspect-[480/850]">
-          <Image
-            src="/videos/hero-loop-poster.jpg"
-            alt="A Nikah invitation with a wax seal, about to open"
-            fill
-            preload
-            fetchPriority="high"
-            loading="eager"
-            sizes="(min-width: 768px) 300px, 220px"
-            className="object-cover"
-          />
-          <HeroVideo src="/videos/hero-loop.mp4" />
+        {/* Desktop only. On phones the first screen is just the message and the button (nothing is downloaded). */}
+        <PhoneFrame className="mx-auto hidden w-[300px] md:block" aspect="aspect-[9/16]">
+          <picture>
+            <source media="(min-width: 768px)" srcSet={poster.srcSet} sizes={poster.sizes} />
+            <img
+              src={BLANK}
+              alt="Animated caricature of a bride and groom in wedding attire"
+              fetchPriority="high"
+              decoding="async"
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+          </picture>
+          <HeroVideo src="/videos/hero-caricature.mp4" />
         </PhoneFrame>
       </div>
     </section>

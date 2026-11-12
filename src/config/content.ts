@@ -16,19 +16,19 @@ export const hero = {
 
 export const demo = {
   title: { before: "Watch it ", em: "open", after: "." },
-  text: "Recorded on a real phone. Tap for sound.",
+  text: "Real invitations, exactly as guests see them on their phones. Tap for sound.",
   videos: [
     {
-      src: "/videos/demo-nikah-1.mp4",
-      poster: "/videos/demo-nikah-1-poster.jpg",
-      title: "Wax-seal opening",
-      text: "A sealed envelope unfolds into the invitation.",
+      src: "/videos/demo-ajish-sikha.mp4",
+      poster: "/videos/demo-ajish-sikha-cover.jpg",
+      title: "Ajish & Sikha",
+      text: "Velvet curtains part onto their journey, with the day’s schedule.",
     },
     {
-      src: "/videos/demo-nikah-2.mp4",
-      poster: "/videos/demo-nikah-2-poster.jpg",
-      title: "Arched doors",
-      text: "Doors open onto the couple, with music.",
+      src: "/videos/demo-fidha-hatib.mp4",
+      poster: "/videos/demo-fidha-hatib-cover.jpg",
+      title: "Fidha & Hatib",
+      text: "Curtains open into a candlelit ballroom.",
     },
   ],
 } as const;

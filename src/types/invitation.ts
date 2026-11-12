@@ -17,6 +17,7 @@ export type CategorySource =
   | "content"
   | "original"
   | "name-guess"
+  | "owner" // confirmed by the owner
   | "unknown";
 
 export interface Invitation {
@@ -34,6 +35,8 @@ export interface Invitation {
   poster: string | null;
   posterSize?: [number, number];
   featured?: number;
+  /** Design template (D01…), from scripts/add-themes.mjs. Only one design per theme is shown. */
+  theme?: string;
   hidden?: boolean;
   duplicateOf?: string;
 }

@@ -11,7 +11,12 @@ export function HeroVideo({ src }: { src: string }) {
 
   useEffect(() => {
     const conn = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || conn?.saveData) return;
+    if (
+      !window.matchMedia("(min-width: 768px)").matches || // desktop only
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+      conn?.saveData
+    )
+      return;
     const start = () => setTimeout(() => setPlay(true), 300);
     if (document.readyState === "complete") start();
     else window.addEventListener("load", start, { once: true });

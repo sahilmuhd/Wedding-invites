@@ -17,7 +17,7 @@ export function Demo() {
       >
         {demo.videos.map((d) => (
           <li key={d.src} className="w-[min(78vw,20rem)] shrink-0 snap-center text-center">
-            <PhoneFrame aspect="aspect-[9/16]">
+            <PhoneFrame aspect="aspect-[390/844]">
               <DemoVideo src={d.src} poster={d.poster} title={d.title} />
             </PhoneFrame>
             <h3 className="mt-5 text-xl">{d.title}</h3>
