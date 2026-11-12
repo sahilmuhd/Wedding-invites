@@ -35,7 +35,17 @@ export function GuestDesk() {
             {guestDesk.screens.map((s, i) => (
               <li key={s.src} className={`w-[62vw] max-w-[15rem] shrink-0 snap-center lg:w-auto lg:max-w-none ${i % 2 ? "lg:translate-y-10" : ""}`}>
                 <PhoneFrame aspect="aspect-[390/844]">
-                  <Image src={s.src} alt={s.alt} fill sizes="(min-width: 1024px) 240px, 62vw" className="object-cover object-top" />
+                  {/* Already small WebP files: served as-is and loaded eagerly, because lazy images inside a
+                      sideways-swiping row can fail to load on iPhone Safari. */}
+                  <Image
+                    src={s.src}
+                    alt={s.alt}
+                    fill
+                    unoptimized
+                    loading="eager"
+                    sizes="(min-width: 1024px) 240px, 62vw"
+                    className="object-cover object-top"
+                  />
                 </PhoneFrame>
                 <p className="mt-3 text-center text-sm text-ink-soft">{s.caption}</p>
               </li>
