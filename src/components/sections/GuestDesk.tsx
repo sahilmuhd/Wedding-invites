@@ -9,7 +9,7 @@ export function GuestDesk() {
   return (
     <section id="guest-desk" aria-labelledby="guest-desk-title" className="section overflow-hidden">
       <div className="container-page grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-16">
-        <div data-reveal>
+        <div className="min-w-0" data-reveal>
           <SectionHeading id="guest-desk-title" eyebrow={guestDesk.eyebrow} title={guestDesk.title} text={guestDesk.text} />
           <ul className="mt-6 space-y-3">
             {guestDesk.points.map((p) => (
@@ -27,7 +27,7 @@ export function GuestDesk() {
           </a>
         </div>
 
-        <div data-reveal>
+        <div className="min-w-0" data-reveal>
           <ul
             aria-label="Guest desk screens"
             className="no-scrollbar -mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-2 sm:mx-0 sm:px-0 lg:grid lg:grid-cols-2 lg:gap-6 lg:overflow-visible"

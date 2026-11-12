@@ -12,7 +12,7 @@ const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
 const ids = ["jishnu-vibha", "sanoop-fidha", "vinay-athira"];
 const H = 500, W = Math.round(H * 0.5);
 const phones = await Promise.all(ids.map(async (id) => {
-  const img = await sharp(path.join(root, `public/invitations/${id}.webp`)).resize(W, H, { fit: "cover", position: "top" }).png().toBuffer();
+  const img = await sharp(path.join(root, `media-src/invitations/${id}.webp`)).resize(W, H, { fit: "cover", position: "top" }).png().toBuffer();
   const mask = Buffer.from(`<svg width="${W}" height="${H}"><rect width="${W}" height="${H}" rx="28"/></svg>`);
   return sharp(img).composite([{ input: mask, blend: "dest-in" }]).png().toBuffer();
 }));

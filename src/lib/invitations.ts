@@ -66,7 +66,8 @@ export const designItems: DesignItem[] = onePerTheme(
     name: i.title ?? displayName(i),
     category: i.category,
     url: i.url,
-    poster: i.poster,
+    // Watermarked copies are published under /designs/ (see scripts/watermark.mjs).
+    poster: i.poster && i.poster.replace(/^\/invitations\//, "/designs/"),
     posterSize: i.posterSize,
   }));
 

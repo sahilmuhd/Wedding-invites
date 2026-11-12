@@ -7,12 +7,13 @@
  *   node scripts/capture.mjs --all        # retake everything
  *   node scripts/capture.mjs --only alwin-sona,hanan-aslam
  *
- * Output: public/invitations/{id}.webp (480px wide) + updates `poster`/`posterSize`
+ * Output: media-src/invitations/{id}.webp (clean, 480px wide), then a watermarked copy in public/designs + updates `poster`/`posterSize`
  * in src/data/invitations.generated.json. Failures are listed at the end.
  */
 import fs from "node:fs";
 import path from "node:path";
 import sharp from "sharp";
+import { execFileSync } from "node:child_process";
 import { chromium } from "playwright";
 
 const root = path.resolve(import.meta.dirname, "..");
@@ -23,7 +24,7 @@ const only = args.includes("--only") ? args[args.indexOf("--only") + 1].split(",
 const all = args.includes("--all");
 const todo = data.filter((i) => i.url && !i.hidden && (only ? only.includes(i.id) : all || !i.poster));
 
-fs.mkdirSync(path.join(root, "public/invitations"), { recursive: true });
+fs.mkdirSync(path.join(root, "media-src/invitations"), { recursive: true });
 const browser = await chromium.launch();
 const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true });
 const failed = [];
@@ -40,7 +41,8 @@ for (const [n, inv] of todo.entries()) {
     const buf = await page.screenshot({ type: "png" });
     const out = await sharp(buf).resize(480).webp({ quality: 82 }).toBuffer();
     const meta = await sharp(out).metadata();
-    fs.writeFileSync(path.join(root, `public/invitations/${inv.id}.webp`), out);
+    fs.writeFileSync(path.join(root, `media-src/invitations/${inv.id}.webp`), out);
+    execFileSync("node", [path.join(root, "scripts/watermark.mjs"), inv.id]);
     inv.poster = `/invitations/${inv.id}.webp`;
     inv.posterSize = [meta.width, meta.height];
     console.log(`[${n + 1}/${todo.length}] ok   ${inv.id}`);

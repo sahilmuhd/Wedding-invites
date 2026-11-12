@@ -6,7 +6,7 @@
  * - Categories: content signals from legacy/themes_report.txt (design clusters),
  *   cross-checked with legacy/samples.deduped.js, then the original category.
  * - Marks same-couple/same-category variants as duplicates (kept, but hidden).
- * - Converts poster JPGs to WebP thumbnails in public/invitations.
+ * - Converts poster JPGs to WebP thumbnails in media-src/invitations (then run scripts/watermark.mjs).
  * No network access is used.
  */
 import fs from "node:fs";
@@ -15,8 +15,7 @@ import sharp from "sharp";
 
 if (!process.argv.includes("--force")) {
   console.error(
-    "Refusing to run: this regenerates src/data/invitations.generated.json from legacy/ and drops captured posters,
-" +
+    "Refusing to run: this regenerates src/data/invitations.generated.json from legacy/ and drops captured posters,\n" +
       "hidden-duplicate edits and other manual changes. Re-run with --force if that is what you want.",
   );
   process.exit(1);
@@ -129,7 +128,7 @@ const sixth = out.find((i) => i.category === "Christian" && !i.hidden && i.url);
 if (sixth) sixth.featured = 6;
 
 /* ---- thumbnails ---- */
-const outDir = path.join(root, "public/invitations");
+const outDir = path.join(root, "media-src/invitations"); // clean originals; run scripts/watermark.mjs after
 fs.mkdirSync(outDir, { recursive: true });
 for (const i of out) {
   if (!i._src) continue;
