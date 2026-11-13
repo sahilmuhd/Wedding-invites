@@ -40,7 +40,7 @@ export function Hero() {
                 <source media="(max-width: 767px)" srcSet="/videos/hero-medallion.jpg" />
                 <img src={BLANK} alt="" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
               </picture>
-              <HeroVideo src="/videos/hero-medallion.mp4" media="(max-width: 767px)" />
+              <HeroVideo src="/videos/hero-duo-medallion.mp4" media="(max-width: 767px)" />
             </div>
           </div>
           <p className="mt-4 max-w-[34rem] text-ink-soft md:mt-6 md:text-[17px] md:leading-7">{hero.sub}</p>
@@ -69,13 +69,13 @@ export function Hero() {
             <source media="(min-width: 768px)" srcSet={poster.srcSet} sizes={poster.sizes} />
             <img
               src={BLANK}
-              alt="Animated caricature of a bride and groom in wedding attire"
+              alt="Animated bride and groom: a playful caricature and a first dance under fairy lights"
               fetchPriority="high"
               decoding="async"
               className="absolute inset-0 h-full w-full object-cover"
             />
           </picture>
-          <HeroVideo src="/videos/hero-caricature.mp4" media="(min-width: 768px)" />
+          <HeroVideo src="/videos/hero-duo.mp4" media="(min-width: 768px)" />
         </PhoneFrame>
       </div>
     </section>
