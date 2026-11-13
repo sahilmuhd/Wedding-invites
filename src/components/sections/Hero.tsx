@@ -31,16 +31,17 @@ export function Hero() {
             <h1 id="hero-title" className="min-w-0 flex-1 text-[40px] leading-[44px] text-balance md:text-[64px] md:leading-[70px]">
               <RichTitle t={hero.title} />
             </h1>
-            {/* Phones only: the couple in a round "wax seal" medallion beside the headline. */}
+            {/* Phones only: the couple in a rounded "stamp" tile beside the headline.
+                Rounded square (not a circle) so both standing figures fill the frame without heads being cut. */}
             <div
               aria-hidden="true"
-              className="relative size-[112px] shrink-0 overflow-hidden rounded-full border-2 border-maroon bg-white shadow-[0_0_0_4px_#fff,0_0_0_5px_rgba(90,20,36,0.25),0_14px_30px_-14px_rgba(90,20,36,0.5)] md:hidden"
+              className="relative size-[116px] shrink-0 overflow-hidden rounded-[30px] border-2 border-maroon bg-white shadow-[0_0_0_4px_#fff,0_0_0_5px_rgba(90,20,36,0.25),0_14px_30px_-14px_rgba(90,20,36,0.5)] md:hidden"
             >
               <picture>
-                <source media="(max-width: 767px)" srcSet="/videos/hero-medallion.jpg" />
+                <source media="(max-width: 767px)" srcSet="/videos/hero-tile.jpg" />
                 <img src={BLANK} alt="" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
               </picture>
-              <HeroVideo src="/videos/hero-duo-medallion.mp4" media="(max-width: 767px)" />
+              <HeroVideo src="/videos/hero-duo-tile.mp4" media="(max-width: 767px)" />
             </div>
           </div>
           <p className="mt-4 max-w-[34rem] text-ink-soft md:mt-6 md:text-[17px] md:leading-7">{hero.sub}</p>
