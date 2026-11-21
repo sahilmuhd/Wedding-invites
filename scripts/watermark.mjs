@@ -45,15 +45,15 @@ async function styleFor(image, left, top, w, h) {
 }
 
 /** visibleH: how much of the image is actually shown (gallery cards crop posters to 3:5). */
-async function markImage(inFile, outFile, { widthFrac, bottomGap, visibleH, forceWhite }) {
+async function markImage(inFile, outFile, { widthFrac, bottomGap, visibleH, forceWhite, position = "bottom" }) {
   const img = sharp(inFile);
   const { width, height } = await img.metadata();
-  const markW = Math.round(width * widthFrac);
+  const markW = Math.round(width * (position === "top-right" ? widthFrac * 0.8 : widthFrac));
   const probe = markSvg(markW, "#FFFFFF", 1, false);
   const { height: markH } = await sharp(probe).metadata();
   const areaH = Math.min(height, visibleH ?? height);
-  const left = Math.round((width - markW) / 2) - 4;
-  const top = Math.max(0, areaH - bottomGap - markH);
+  const left = position === "top-right" ? width - markW - 18 : Math.round((width - markW) / 2) - 4;
+  const top = position === "top-right" ? 18 : Math.max(0, areaH - bottomGap - markH);
   const style = forceWhite
     ? { color: "#FFFFFF", opacity: 0.85, shadow: true }
     : await styleFor(inFile, Math.max(0, left), top, Math.min(markW + 8, width - Math.max(0, left)), markH);
@@ -90,9 +90,12 @@ const tally = (c) => count[c === "#FFFFFF" ? "white" : "maroon"]++;
 // Published under /designs/ (not /invitations/) so caches never serve the old unmarked files.
 fs.mkdirSync(pub("designs"), { recursive: true });
 const posters = fs.readdirSync(src("invitations")).filter((f) => f.endsWith(".webp") && (!only.length || only.includes(f.replace(/\.webp$/, ""))));
+// Designs whose names or key artwork sit where the mark normally goes (bottom of the visible card).
+const POSITION = { "aysha-farhan-falakh-shahzar": "top-right" };
 for (const f of posters) {
   const { width } = await sharp(src("invitations", f)).metadata();
-  tally(await markImage(src("invitations", f), pub("designs", f), { widthFrac: 0.34, bottomGap: 22, visibleH: Math.round((width * 5) / 3) }));
+  const position = POSITION[f.replace(/\.webp$/, "")] ?? "bottom";
+  tally(await markImage(src("invitations", f), pub("designs", f), { widthFrac: 0.34, bottomGap: 22, visibleH: Math.round((width * 5) / 3), position }));
 }
 if (!only.length) {
   fs.mkdirSync(pub("guest-desk"), { recursive: true });
