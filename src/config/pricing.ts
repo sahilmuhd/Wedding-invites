@@ -14,7 +14,6 @@ export interface PricingPlan {
 export const pricing = {
   currency: "₹",
   locale: "en-IN",
-  advance: 200,
   deliveryTime: "24 hours",
   plans: [
     {
