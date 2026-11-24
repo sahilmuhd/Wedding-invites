@@ -51,6 +51,29 @@ export function PreviewSheet({ item, onClose }: { item: DesignItem; onClose: () 
     return () => clearTimeout(t);
   }, [view]);
 
+  // Make it obvious the row of couples scrolls sideways: right-edge fade + "Swipe →" + one gentle nudge.
+  const rowRef = useRef<HTMLDivElement>(null);
+  const [moreRight, setMoreRight] = useState(false);
+  const [moreBelow, setMoreBelow] = useState(false); // desktop: names wrap into a scrollable box
+  const updateEdge = () => {
+    const r = rowRef.current;
+    if (!r) return;
+    setMoreRight(r.scrollLeft + r.clientWidth < r.scrollWidth - 8);
+    setMoreBelow(r.scrollTop + r.clientHeight < r.scrollHeight - 8);
+  };
+  useEffect(() => {
+    const r = rowRef.current;
+    if (!r) return;
+    updateEdge();
+    if (r.scrollWidth <= r.clientWidth + 8 || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const out = setTimeout(() => r.scrollTo({ left: 72, behavior: "smooth" }), 700);
+    const back = setTimeout(() => r.scrollTo({ left: 0, behavior: "smooth" }), 1500);
+    return () => {
+      clearTimeout(out);
+      clearTimeout(back);
+    };
+  }, []);
+
   const choose = (i: number) => {
     if (i === view) return;
     setLoaded(false);
@@ -146,10 +169,29 @@ export function PreviewSheet({ item, onClose }: { item: DesignItem; onClose: () 
         <div className="flex shrink-0 flex-col items-center border-t border-line bg-white pt-3" style={{ paddingBottom: "max(0.75rem, env(safe-area-inset-bottom))" }}>
           {versions.length > 1 && (
             <div className="mb-3 w-full max-w-3xl">
-              <p className="px-4 text-xs text-ink-soft">
-                Created from this design <span className="text-maroon">· {versions.length} couples</span>
-              </p>
-              <div role="group" aria-label="Invitations created from this design" className="no-scrollbar mt-2 flex gap-2 overflow-x-auto px-4">
+              <div className="flex items-baseline justify-between gap-3 px-4">
+                <p className="text-xs text-ink-soft">
+                  <span className="font-medium text-maroon">Same design for {versions.length} couples</span> — tap a name to view
+                </p>
+                {moreRight && (
+                  <span aria-hidden="true" className="shrink-0 text-xs font-medium text-maroon md:hidden">
+                    Swipe →
+                  </span>
+                )}
+                {moreBelow && (
+                  <span aria-hidden="true" className="hidden shrink-0 text-xs font-medium text-maroon md:inline">
+                    Scroll for more ↓
+                  </span>
+                )}
+              </div>
+              <div className="relative">
+              <div
+                ref={rowRef}
+                onScroll={updateEdge}
+                role="group"
+                aria-label="Invitations created from this design"
+                className="no-scrollbar mt-2 flex gap-2 overflow-x-auto px-4 md:max-h-[6.5rem] md:flex-wrap md:overflow-y-auto md:overflow-x-visible"
+              >
                 {versions.map((v, i) => (
                   <button
                     key={v.url ?? v.name}
@@ -163,6 +205,14 @@ export function PreviewSheet({ item, onClose }: { item: DesignItem; onClose: () 
                     {v.name}
                   </button>
                 ))}
+              </div>
+              {/* Fade on the right edge while more names are off-screen (phones). */}
+              {moreRight && (
+                <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 right-0 w-14 bg-linear-to-l from-white to-transparent md:hidden" />
+              )}
+              {moreBelow && (
+                <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 hidden h-8 bg-linear-to-t from-white to-transparent md:block" />
+              )}
               </div>
             </div>
           )}
