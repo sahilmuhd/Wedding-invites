@@ -38,8 +38,7 @@ export const pricing = {
     {
       id: "signature",
       name: "Signature",
-      // TODO(owner): set the Signature price (e.g. 2499). Until then the card shows "On request".
-      price: null,
+      price: 2500,
       features: [
         "Everything in Premium, plus:",
         "Private guest desk with secure login",
