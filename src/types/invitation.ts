@@ -49,4 +49,6 @@ export interface DesignItem {
   url: string | null;
   poster: string | null;
   posterSize?: [number, number];
+  /** Other couples' invitations made with this same design ("Also made for …"). */
+  more?: { name: string; url: string }[];
 }

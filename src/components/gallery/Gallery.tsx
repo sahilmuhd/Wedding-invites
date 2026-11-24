@@ -4,7 +4,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { track } from "@vercel/analytics";
 import { Search, X } from "lucide-react";
 import type { DesignItem, FilterKey } from "@/types/invitation";
-import { PAGE_SIZE, filterTabs, matchesFilter } from "@/lib/invitations";
+import { PAGE_SIZE, filterTabs, matchesFilter } from "@/lib/categories";
 import { designs as copy } from "@/config/content";
 import { generalEnquiryLink } from "@/lib/whatsapp";
 import { buttonClass } from "@/components/ui/Button";

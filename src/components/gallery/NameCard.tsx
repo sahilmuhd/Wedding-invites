@@ -1,5 +1,5 @@
 import type { DesignItem } from "@/types/invitation";
-import { categoryLabel } from "@/lib/invitations";
+import { categoryLabel } from "@/lib/categories";
 import { LogoMark } from "@/components/ui/Logo";
 
 /** Typographic placeholder for designs without a screenshot. Shows only the name and category. */

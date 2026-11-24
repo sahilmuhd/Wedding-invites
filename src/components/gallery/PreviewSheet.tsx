@@ -4,7 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { ExternalLink, X } from "lucide-react";
 import type { DesignItem } from "@/types/invitation";
-import { categoryLabel } from "@/lib/invitations";
+import { track } from "@vercel/analytics";
+import { categoryLabel } from "@/lib/categories";
 import { designEnquiryLink } from "@/lib/whatsapp";
 import { buttonClass } from "@/components/ui/Button";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
@@ -24,6 +25,12 @@ export function PreviewSheet({ item, onClose }: { item: DesignItem; onClose: () 
   const [drag, setDrag] = useState(0);
   const category = categoryLabel[item.category];
 
+  // The design itself first, then every other couple's invitation created from it.
+  const versions = [{ name: item.name, url: item.url }, ...(item.more ?? [])];
+  const [view, setView] = useState(0);
+  const current = versions[view];
+  const isOriginal = view === 0;
+
   useEffect(() => {
     const dlg = ref.current;
     if (!dlg) return;
@@ -31,16 +38,28 @@ export function PreviewSheet({ item, onClose }: { item: DesignItem; onClose: () 
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     document.body.setAttribute("data-sheet-open", "");
-    const t = setTimeout(() => setTimedOut(true), LOAD_TIMEOUT_MS);
     return () => {
-      clearTimeout(t);
       document.body.style.overflow = prev;
       document.body.removeAttribute("data-sheet-open");
       if (dlg.open) dlg.close();
     };
   }, []);
 
-  const showFallback = !item.url || (timedOut && !loaded);
+  // (Re)start the "taking too long" timer whenever a different version is opened.
+  useEffect(() => {
+    const t = setTimeout(() => setTimedOut(true), LOAD_TIMEOUT_MS);
+    return () => clearTimeout(t);
+  }, [view]);
+
+  const choose = (i: number) => {
+    if (i === view) return;
+    setLoaded(false);
+    setTimedOut(false);
+    setView(i);
+    track("preview_version", { design: item.name, version: versions[i].name });
+  };
+
+  const showFallback = !current.url || (timedOut && !loaded);
 
   return (
     <dialog
@@ -68,8 +87,8 @@ export function PreviewSheet({ item, onClose }: { item: DesignItem; onClose: () 
           }}
         >
           <div className="min-w-0">
-            <p id="sheet-title" className="truncate font-serif text-lg leading-tight text-maroon">{item.name}</p>
-            <p className="text-xs text-ink-soft">{category}</p>
+            <p id="sheet-title" className="truncate font-serif text-lg leading-tight text-maroon">{current.name}</p>
+            <p className="truncate text-xs text-ink-soft">{isOriginal ? category : `Created from ${item.name}`}</p>
           </div>
           <button
             type="button"
@@ -85,10 +104,11 @@ export function PreviewSheet({ item, onClose }: { item: DesignItem; onClose: () 
         {/* Invitation: full-bleed on phones, phone-framed on desktop */}
         <div className="relative min-h-0 flex-1 md:flex md:items-center md:justify-center md:py-6">
           <div className="relative h-full w-full overflow-hidden bg-white md:h-full md:max-h-[844px] md:w-auto md:aspect-[390/844] md:rounded-[2rem] md:border-[6px] md:border-ink md:shadow-2xl">
-            {item.url && !showFallback && (
+            {current.url && !showFallback && (
               <iframe
-                src={item.url}
-                title={`${item.name} — live invitation preview`}
+                key={current.url}
+                src={current.url}
+                title={`${current.name} — live invitation preview`}
                 loading="lazy"
                 allow="autoplay; fullscreen"
                 onLoad={() => setLoaded(true)}
@@ -102,7 +122,7 @@ export function PreviewSheet({ item, onClose }: { item: DesignItem; onClose: () 
             )}
             {showFallback && (
               <div className="absolute inset-0 flex flex-col items-center justify-center gap-5 overflow-y-auto p-6">
-                {item.poster && (
+                {isOriginal && item.poster && (
                   <Image
                     src={item.poster}
                     alt={`${item.name} invitation`}
@@ -112,8 +132,8 @@ export function PreviewSheet({ item, onClose }: { item: DesignItem; onClose: () 
                     className="max-h-[60vh] w-auto rounded-xl border border-line object-contain"
                   />
                 )}
-                {item.url && (
-                  <a href={item.url} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-1.5 text-sm text-maroon underline underline-offset-4">
+                {current.url && (
+                  <a href={current.url} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-1.5 text-sm text-maroon underline underline-offset-4">
                     Open full screen <ExternalLink className="size-4" aria-hidden="true" />
                   </a>
                 )}
@@ -122,8 +142,31 @@ export function PreviewSheet({ item, onClose }: { item: DesignItem; onClose: () 
           </div>
         </div>
 
-        {/* Book bar */}
-        <div className="flex shrink-0 justify-center border-t border-line bg-white px-4 pt-3" style={{ paddingBottom: "max(0.75rem, env(safe-area-inset-bottom))" }}>
+        {/* Book bar, with the other couples' invitations created from this design */}
+        <div className="flex shrink-0 flex-col items-center border-t border-line bg-white pt-3" style={{ paddingBottom: "max(0.75rem, env(safe-area-inset-bottom))" }}>
+          {versions.length > 1 && (
+            <div className="mb-3 w-full max-w-3xl">
+              <p className="px-4 text-xs text-ink-soft">
+                Created from this design <span className="text-maroon">· {versions.length} couples</span>
+              </p>
+              <div role="group" aria-label="Invitations created from this design" className="no-scrollbar mt-2 flex gap-2 overflow-x-auto px-4">
+                {versions.map((v, i) => (
+                  <button
+                    key={v.url ?? v.name}
+                    type="button"
+                    aria-pressed={i === view}
+                    onClick={() => choose(i)}
+                    className={`min-h-11 shrink-0 whitespace-nowrap rounded-full border px-4 text-sm transition-colors ${
+                      i === view ? "border-maroon bg-maroon text-white" : "border-line bg-white text-ink hover:border-maroon/40"
+                    }`}
+                  >
+                    {v.name}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+          <div className="flex w-full justify-center px-4">
           <WhatsAppLink
             href={designEnquiryLink(item.name, category)}
             location="sheet"
@@ -132,6 +175,7 @@ export function PreviewSheet({ item, onClose }: { item: DesignItem; onClose: () 
           >
             <WhatsAppIcon className="size-5" /> Book this design on WhatsApp
           </WhatsAppLink>
+          </div>
         </div>
       </div>
     </dialog>

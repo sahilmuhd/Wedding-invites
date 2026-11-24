@@ -1,0 +1,747 @@
+[
+ {
+  "name": "Anees & Shifana",
+  "url": "https://anees-shifana.vercel.app/",
+  "theme": "D02"
+ },
+ {
+  "name": "Iyas & Hisana",
+  "url": "https://iyas-hisana.vercel.app/",
+  "theme": "D02"
+ },
+ {
+  "name": "Nadeer & Fidha Fairose",
+  "url": "https://nadeer-fidha.vercel.app/",
+  "theme": "D02"
+ },
+ {
+  "name": "Nahmal & Thamanna",
+  "url": "https://nahmal-thamanna.vercel.app/",
+  "theme": "D02"
+ },
+ {
+  "name": "Ragitha & Sabikh",
+  "url": "https://ragitha-sabikh.vercel.app/",
+  "theme": "D02"
+ },
+ {
+  "name": "Rahoof & Naja",
+  "url": "https://rahoof-naja.vercel.app/",
+  "theme": "D02"
+ },
+ {
+  "name": "Riyas & Jeseena",
+  "url": "https://riyas-jeseena.vercel.app/",
+  "theme": "D02"
+ },
+ {
+  "name": "Shahbas & Nadira",
+  "url": "https://shahabas-nadira.vercel.app/",
+  "theme": "D02"
+ },
+ {
+  "name": "Thameer Althaf & Jabina",
+  "url": "https://thameer-althaf-jabina.vercel.app/",
+  "theme": "D02"
+ },
+ {
+  "name": "Al Ameen · Housewarming",
+  "url": "https://al-ameen-house-warming.vercel.app/",
+  "theme": "D03"
+ },
+ {
+  "name": "Ashik & Ameena · Housewarming",
+  "url": "https://house-warming-ashik-ameena.vercel.app/",
+  "theme": "D03"
+ },
+ {
+  "name": "SM Villa · Housewarming",
+  "url": "https://sm-villa-house-warming.vercel.app/",
+  "theme": "D03"
+ },
+ {
+  "name": "Unais & Asmitha Banu · Housewarming",
+  "url": "https://unais-asmitha-house-warming.vercel.app/",
+  "theme": "D03"
+ },
+ {
+  "name": "Akhil & Kesiah",
+  "url": "https://akhil-kesiah.vercel.app/",
+  "theme": "D04"
+ },
+ {
+  "name": "Aysha Hiba & Ismail Siyad",
+  "url": "https://aysha-hiba-ismail.vercel.app/",
+  "theme": "D04"
+ },
+ {
+  "name": "Catherine & Jisson",
+  "url": "https://jisson-catherine-wedding.vercel.app/",
+  "theme": "D04"
+ },
+ {
+  "name": "Jagannadan & Dilna",
+  "url": "https://dilna-jaganathan.vercel.app/",
+  "theme": "D04"
+ },
+ {
+  "name": "Jojin & Aneenamol",
+  "url": "https://aneenmol-jojin.vercel.app/",
+  "theme": "D04"
+ },
+ {
+  "name": "Philip & Stephy",
+  "url": "https://philip-stephy.vercel.app/",
+  "theme": "D04"
+ },
+ {
+  "name": "Sandra & Kiran",
+  "url": "https://sandra-kiran.vercel.app/",
+  "theme": "D04"
+ },
+ {
+  "name": "Vineetha & Gilbert",
+  "url": "https://vineetha-gilbert.vercel.app/",
+  "theme": "D04"
+ },
+ {
+  "name": "Dr. Meena Ismail & Shehin Basheer",
+  "url": "https://meena-shehin.vercel.app/",
+  "theme": "D06"
+ },
+ {
+  "name": "Rafeeda & Muheez",
+  "url": "https://muhees-rafeeda.vercel.app/",
+  "theme": "D06"
+ },
+ {
+  "name": "Alwin Joseph & Anju Paul",
+  "url": "https://alwin-anju.vercel.app/",
+  "theme": "D09"
+ },
+ {
+  "name": "Aysha Minu & Mohammed Fayis",
+  "url": "https://aysha-fayis.vercel.app/",
+  "theme": "D09"
+ },
+ {
+  "name": "Nadhiya & Thoufeeq",
+  "url": "https://nadiya-thoufeeq.vercel.app/",
+  "theme": "D09"
+ },
+ {
+  "name": "Suhail Z & Hasna Ansar",
+  "url": "https://suhail-hasna.vercel.app/",
+  "theme": "D09"
+ },
+ {
+  "name": "Albin George & Vismaya Wilson",
+  "url": "https://albin-vismaya.vercel.app/",
+  "theme": "D10"
+ },
+ {
+  "name": "Dr Jashida Mariyam & Dr Muhammed Meersa",
+  "url": "https://jashida-meersa.vercel.app/",
+  "theme": "D10"
+ },
+ {
+  "name": "Gregory & Lilly",
+  "url": "https://gregory-lilly.vercel.app/",
+  "theme": "D10"
+ },
+ {
+  "name": "Naveen & Susmin",
+  "url": "https://naveen-susmin.vercel.app/",
+  "theme": "D10"
+ },
+ {
+  "name": "Thouseef Roshan & Asna Parveen",
+  "url": "https://thouseef-asna.vercel.app/",
+  "theme": "D10"
+ },
+ {
+  "name": "A. Azarudeen & U. Riya Nasrin",
+  "url": "https://azarudeen-riyanasrin.vercel.app/",
+  "theme": "D102"
+ },
+ {
+  "name": "Ashna Sainudeen & Muhammed Thanseer",
+  "url": "https://ashna-thanseer.vercel.app/",
+  "theme": "D102"
+ },
+ {
+  "name": "Muhammed Ashik & Fathima Nasrin",
+  "url": "https://ashik-nasrin.vercel.app/",
+  "theme": "D102"
+ },
+ {
+  "name": "Niyas & Nasiya",
+  "url": "https://niyas-nasiya.vercel.app/",
+  "theme": "D102"
+ },
+ {
+  "name": "Zabi Khan & Tasmiya Nawal",
+  "url": "https://zabi-tasmiya.vercel.app/",
+  "theme": "D11"
+ },
+ {
+  "name": "Abdul Raheem & Dr. Hanna",
+  "url": "https://raheem-hanna.vercel.app/",
+  "theme": "D12"
+ },
+ {
+  "name": "Ali Hamdan & Amna Fathima",
+  "url": "https://ali-amna.vercel.app/",
+  "theme": "D12"
+ },
+ {
+  "name": "Azlam & Riswana",
+  "url": "https://azlam-riswana.vercel.app/",
+  "theme": "D12"
+ },
+ {
+  "name": "Azmabi Nazar & Muhammad Bilal",
+  "url": "https://azmabi-bilal.vercel.app/",
+  "theme": "D12"
+ },
+ {
+  "name": "Dr. Hiba Karim & Dr. Muhsin Habeer",
+  "url": "https://hiba-muhsin.vercel.app/",
+  "theme": "D12"
+ },
+ {
+  "name": "Fairoos Katti Koottathil & Subaidabi",
+  "url": "https://fairoos-subaidabi.vercel.app/",
+  "theme": "D12"
+ },
+ {
+  "name": "Jamshad Rahman & Fathimath Riza",
+  "url": "https://jamshad-riza.vercel.app/",
+  "theme": "D12"
+ },
+ {
+  "name": "Libin & Riya",
+  "url": "https://libin-koshy-riya-alex.vercel.app/",
+  "theme": "D12"
+ },
+ {
+  "name": "Mohammed Shaheer & Najma",
+  "url": "https://shaheer-najma.vercel.app/",
+  "theme": "D12"
+ },
+ {
+  "name": "Mohd Ashfaq & Aysha Naja",
+  "url": "https://ashfaq-aysha-naja-skenllp-com.vercel.app/",
+  "theme": "D12"
+ },
+ {
+  "name": "Muhammad Faiz UK & Fitha Nasrin K",
+  "url": "https://faiz-fitha-nasrin.vercel.app/",
+  "theme": "D12"
+ },
+ {
+  "name": "Muhammed Nasheer & Mehathaj Thaslema",
+  "url": "https://nasheer-thaslema.vercel.app/",
+  "theme": "D12"
+ },
+ {
+  "name": "Nifal & Nida",
+  "url": "https://nifal-fathimanida.vercel.app/",
+  "theme": "D12"
+ },
+ {
+  "name": "Omer Shurook Vadakkan & Jihana Jalal",
+  "url": "https://omer-jihana.vercel.app/",
+  "theme": "D12"
+ },
+ {
+  "name": "Rubeeh & Neenu",
+  "url": "https://rubeeh-neenu.vercel.app/",
+  "theme": "D12"
+ },
+ {
+  "name": "Salman & Rahana",
+  "url": "https://salman-rahana.vercel.app/",
+  "theme": "D12"
+ },
+ {
+  "name": "Salmanul Farisy & Aleesha",
+  "url": "https://farisy-aleesha.vercel.app/",
+  "theme": "D12"
+ },
+ {
+  "name": "Shahid & Asla",
+  "url": "https://shahid-asla.vercel.app/",
+  "theme": "D12"
+ },
+ {
+  "name": "Shahin Salman & Shahana Sherin",
+  "url": "https://shahin-shahana.vercel.app/",
+  "theme": "D12"
+ },
+ {
+  "name": "Shehajaz & Imane",
+  "url": "https://shehajaz-imane.vercel.app/",
+  "theme": "D12"
+ },
+ {
+  "name": "Sinan & Fida",
+  "url": "https://sinan-fida.vercel.app/",
+  "theme": "D12"
+ },
+ {
+  "name": "Abdhul Raheem & Shadab Fatima",
+  "url": "https://abduraheem-fathima.vercel.app/",
+  "theme": "D17"
+ },
+ {
+  "name": "Dr. Muhammed Shamal & Dr. Dilshana Abdulla",
+  "url": "https://shamal-dilshana.vercel.app/",
+  "theme": "D17"
+ },
+ {
+  "name": "Mehroofa Nasrin & Muhammed Jabir",
+  "url": "https://mehroofa-jabir.vercel.app/",
+  "theme": "D17"
+ },
+ {
+  "name": "Teja Sai & Mansi",
+  "url": "https://theja-mansi.vercel.app/",
+  "theme": "D18"
+ },
+ {
+  "name": "Athul Raj & Kiran Santhosh",
+  "url": "https://athul-kiran.vercel.app/",
+  "theme": "D20"
+ },
+ {
+  "name": "Ebin & Athira",
+  "url": "https://ebin-athira.vercel.app/",
+  "theme": "D20"
+ },
+ {
+  "name": "Shamnad & Ayisha Rafiya",
+  "url": "https://shamnad-rafiya-reception.vercel.app/",
+  "theme": "D22"
+ },
+ {
+  "name": "Favas Areekkadan & Fathima Rooshin",
+  "url": "https://favas-rooshin.vercel.app/",
+  "theme": "D26"
+ },
+ {
+  "name": "Muhammed Kamal Jouhari & Shahana Sherin Hadiya",
+  "url": "https://kamal-shahala.vercel.app/",
+  "theme": "D26"
+ },
+ {
+  "name": "Riswan & Thafseera",
+  "url": "https://riswan-thafseera.vercel.app/",
+  "theme": "D27"
+ },
+ {
+  "name": "Jesna & Aljith",
+  "url": "https://jesna-aljith.vercel.app/",
+  "theme": "D30"
+ },
+ {
+  "name": "Jawahir & Arwa Fidha",
+  "url": "https://jawahir-arwa.vercel.app/",
+  "theme": "D32"
+ },
+ {
+  "name": "Nithin & Adithya",
+  "url": "https://nithin-adithya.vercel.app/",
+  "theme": "D32"
+ },
+ {
+  "name": "Sudeesh & Shreejitha",
+  "url": "https://sudeesh-shreejitha.vercel.app/",
+  "theme": "D32"
+ },
+ {
+  "name": "Muhammed Remshad & Fathimath Safa",
+  "url": "https://remshad-safa.vercel.app/",
+  "theme": "D37"
+ },
+ {
+  "name": "Siraj & Reem",
+  "url": "https://siraj-reem.vercel.app/",
+  "theme": "D39"
+ },
+ {
+  "name": "Thoufeera & Muhammed Safas",
+  "url": "https://thoufeera-safas.vercel.app/",
+  "theme": "D39"
+ },
+ {
+  "name": "Abraham & Liyona",
+  "url": "https://abraham-liyona.vercel.app/",
+  "theme": "D55"
+ },
+ {
+  "name": "Jobin & Linta",
+  "url": "https://jobin-linta.vercel.app/",
+  "theme": "D55"
+ },
+ {
+  "name": "Jobin & Maria",
+  "url": "https://jobin-mariya.vercel.app/",
+  "theme": "D55"
+ },
+ {
+  "name": "Joji Johnson & Irin Mathew",
+  "url": "https://joji-irin.vercel.app/",
+  "theme": "D55"
+ },
+ {
+  "name": "Sam & Princy",
+  "url": "https://sam-princy.vercel.app/",
+  "theme": "D55"
+ },
+ {
+  "name": "Thomas & Christeena",
+  "url": "https://thomas-christeenamol.vercel.app/",
+  "theme": "D55"
+ },
+ {
+  "name": "Maryam & Ajeer",
+  "url": "https://maryam-ajeer.vercel.app/",
+  "theme": "D58"
+ },
+ {
+  "name": "Abinav & Navani",
+  "url": "https://abinav-navani.vercel.app/",
+  "theme": "D61"
+ },
+ {
+  "name": "Adith & Harsha",
+  "url": "https://adith-harsha.vercel.app/",
+  "theme": "D61"
+ },
+ {
+  "name": "Ali Shuhail & Fida Becker",
+  "url": "https://ali-fida.vercel.app/",
+  "theme": "D61"
+ },
+ {
+  "name": "Anitta & Sunny",
+  "url": "https://anitta-sunny.vercel.app/",
+  "theme": "D61"
+ },
+ {
+  "name": "Anjali & Sreehari",
+  "url": "https://anjali-sreehari.vercel.app/",
+  "theme": "D61"
+ },
+ {
+  "name": "Ashik Thomas & Irine Mariya Anto",
+  "url": "https://ashik-thomas.vercel.app/",
+  "theme": "D61"
+ },
+ {
+  "name": "Asish & Rachel",
+  "url": "https://asisivargees-rachel.vercel.app/",
+  "theme": "D61"
+ },
+ {
+  "name": "Don Joe & Ann Mary",
+  "url": "https://don-joe-ann-mary.vercel.app/",
+  "theme": "D61"
+ },
+ {
+  "name": "Dr. Aiswarya Jose & Dr. Albin Joy",
+  "url": "https://albin-aiswarya.vercel.app/",
+  "theme": "D61"
+ },
+ {
+  "name": "Dr. Zeenath Ghouskhan & Sheik Nihal",
+  "url": "https://zeenath-nihal.vercel.app/",
+  "theme": "D61"
+ },
+ {
+  "name": "Geo & Joicy",
+  "url": "https://geo-joicy.vercel.app/",
+  "theme": "D61"
+ },
+ {
+  "name": "Ginu Philip & Desmond T Mathew",
+  "url": "https://ginu-desmond.vercel.app/",
+  "theme": "D61"
+ },
+ {
+  "name": "Gokul & Sandhra",
+  "url": "https://gokul-sandra.vercel.app/",
+  "theme": "D61"
+ },
+ {
+  "name": "Harikrishnan & Anupa",
+  "url": "https://anupa-harikrishnan.vercel.app/",
+  "theme": "D61"
+ },
+ {
+  "name": "J. Sherjin Jenish & M. Jenifer Mercy",
+  "url": "https://sherjin-jenifer.vercel.app/",
+  "theme": "D61"
+ },
+ {
+  "name": "Jaseem Ameen Ahamed & Nazneen Abdul Nassir",
+  "url": "https://jaseem-nazneen-sangeeth.vercel.app/",
+  "theme": "D61"
+ },
+ {
+  "name": "Jees & Sruthi",
+  "url": "https://jeesmon-sruthi.vercel.app/",
+  "theme": "D61"
+ },
+ {
+  "name": "Jestin M Thomas & Jiss Maria John",
+  "url": "https://jestin-jismaria.vercel.app/",
+  "theme": "D61"
+ },
+ {
+  "name": "Jibin John & Lidiya Anna Kuriyan",
+  "url": "https://jibin-lidiya.vercel.app/",
+  "theme": "D61"
+ },
+ {
+  "name": "Jilson & Anjana",
+  "url": "https://jilson-anjana.vercel.app/",
+  "theme": "D61"
+ },
+ {
+  "name": "Jishnu & Arya",
+  "url": "https://jishnu-arya.vercel.app/",
+  "theme": "D61"
+ },
+ {
+  "name": "Meghna & Aswin",
+  "url": "https://meghna-aswin.vercel.app/",
+  "theme": "D61"
+ },
+ {
+  "name": "Mohammed Haseeb & Siya Fathima",
+  "url": "https://haseeb-siya-fathima.vercel.app/",
+  "theme": "D61"
+ },
+ {
+  "name": "Mohammed Nasih & Irfana Kabeer",
+  "url": "https://nasih-farsana.vercel.app/",
+  "theme": "D61"
+ },
+ {
+  "name": "Mohammed Sarfas & Safna",
+  "url": "https://sarfas-safna-sabithasulthana-shabeeb.vercel.app/",
+  "theme": "D61"
+ },
+ {
+  "name": "Muhammed Shanooj & Aneena Binzi",
+  "url": "https://shanooj-aneena.vercel.app/",
+  "theme": "D61"
+ },
+ {
+  "name": "Najla Nasrin & Shanis",
+  "url": "https://najila-shanis.vercel.app/",
+  "theme": "D61"
+ },
+ {
+  "name": "Nibin Varghese & Asha Joseph",
+  "url": "https://nibin-asha.vercel.app/",
+  "theme": "D61"
+ },
+ {
+  "name": "Sagar T V & Devapriya V",
+  "url": "https://sagar-devapriya.vercel.app/",
+  "theme": "D61"
+ },
+ {
+  "name": "Shameem & Huda",
+  "url": "https://shameem-huda.vercel.app/",
+  "theme": "D61"
+ },
+ {
+  "name": "Shana Majeed & Muhammad Shaheem",
+  "url": "https://shana-shaheem.vercel.app/",
+  "theme": "D61"
+ },
+ {
+  "name": "Shihab & Minha",
+  "url": "https://shihab-minha.vercel.app/",
+  "theme": "D61"
+ },
+ {
+  "name": "Surya & Vyshnav",
+  "url": "https://surya-vayshnav.vercel.app/",
+  "theme": "D61"
+ },
+ {
+  "name": "Umesh & Neethu",
+  "url": "https://umesh-neethu.vercel.app/",
+  "theme": "D61"
+ },
+ {
+  "name": "Unais Navas & Amina S",
+  "url": "https://unais-amina.vercel.app/",
+  "theme": "D61"
+ },
+ {
+  "name": "Vishnu & Shalini",
+  "url": "https://vishnu-shalini.vercel.app/",
+  "theme": "D61"
+ },
+ {
+  "name": "Vishnu Das & Nithya T. J.",
+  "url": "https://vishnu-nithya.vercel.app/",
+  "theme": "D61"
+ },
+ {
+  "name": "Vivek & Sneha",
+  "url": "https://vivek-sneha.vercel.app/",
+  "theme": "D61"
+ },
+ {
+  "name": "Anas & Luthufiya",
+  "url": "https://anas-luthufiya.vercel.app/",
+  "theme": "D66"
+ },
+ {
+  "name": "Aadithya & Amulya",
+  "url": "https://aadithya-amulya.vercel.app/",
+  "theme": "D81"
+ },
+ {
+  "name": "Amal Saji & Jesna Jaimon",
+  "url": "https://amal-jesna.vercel.app/",
+  "theme": "D84"
+ },
+ {
+  "name": "Benson & Meera",
+  "url": "https://benson-meera.vercel.app/",
+  "theme": "D84"
+ },
+ {
+  "name": "Merlin Mathew & Alen George Thomas",
+  "url": "https://alen-george-merlin.vercel.app/",
+  "theme": "D84"
+ },
+ {
+  "name": "Nighees Varghese & Josmin Joseph",
+  "url": "https://nighees-josmin.vercel.app/",
+  "theme": "D84"
+ },
+ {
+  "name": "Anand & Surya",
+  "url": "https://anand-surya.vercel.app/",
+  "theme": "D91"
+ },
+ {
+  "name": "Al Ameen A & Rezvana N",
+  "url": "https://al-ameen-rezvana.vercel.app/",
+  "theme": "N05"
+ },
+ {
+  "name": "Anha & Sabeeh",
+  "url": "https://anha-sabeeh.vercel.app/",
+  "theme": "N07"
+ },
+ {
+  "name": "Dr. Ahammadul Kabeer & Dr. Fidha Jasmine",
+  "url": "https://ahammadul-kabeer-fidha-jasmine.vercel.app/",
+  "theme": "N07"
+ },
+ {
+  "name": "Shahadiya & Shakeel",
+  "url": "https://shahadiya-shakeel.vercel.app/",
+  "theme": "N07"
+ },
+ {
+  "name": "Shahabas & Naseeba",
+  "url": "https://shahabas-naseeba.vercel.app/",
+  "theme": "N08"
+ },
+ {
+  "name": "Fitha & Yasseen",
+  "url": "https://fitha-yasseen.vercel.app/",
+  "theme": "N09"
+ },
+ {
+  "name": "Sahal & Sharafiya",
+  "url": "https://sahal-sharafiya.vercel.app/",
+  "theme": "N09"
+ },
+ {
+  "name": "Amal & Preetha",
+  "url": "https://amal-preetha.vercel.app/",
+  "theme": "N14"
+ },
+ {
+  "name": "Afrid & Liya",
+  "url": "https://afrid-liya-shahba.vercel.app/",
+  "theme": "N28"
+ },
+ {
+  "name": "Ajmal Fawas & Shamna",
+  "url": "https://ajmal-shamna.vercel.app/",
+  "theme": "N28"
+ },
+ {
+  "name": "Haseeb & Risa",
+  "url": "https://haseeb-risa.vercel.app/",
+  "theme": "N28"
+ },
+ {
+  "name": "Mohammed Shafeeque & Fathima Husna",
+  "url": "https://shafeeque-husna.vercel.app/",
+  "theme": "N28"
+ },
+ {
+  "name": "Albert & Mariya",
+  "url": "https://albert-athira.vercel.app/",
+  "theme": "N31"
+ },
+ {
+  "name": "Aiswarya & Sibin",
+  "url": "https://aiswarya-sibin.vercel.app/",
+  "theme": "N38"
+ },
+ {
+  "name": "Akhil & Amritha",
+  "url": "https://akhil-amritha.vercel.app/",
+  "theme": "N38"
+ },
+ {
+  "name": "Amith & Midhuna",
+  "url": "https://amith-midhuna.vercel.app/",
+  "theme": "N38"
+ },
+ {
+  "name": "Anandhu & Meghna",
+  "url": "https://ananthu-meghana.vercel.app/",
+  "theme": "N38"
+ },
+ {
+  "name": "Pramegh & Revathi",
+  "url": "https://pramegh-revathi.vercel.app/",
+  "theme": "N38"
+ },
+ {
+  "name": "Rahul & Aiswarya",
+  "url": "https://rahul-aiswarya.vercel.app/",
+  "theme": "N38"
+ },
+ {
+  "name": "Sarin & Darsana",
+  "url": "https://sarin-darsana.vercel.app/",
+  "theme": "N38"
+ },
+ {
+  "name": "Sreehari & Sruthi",
+  "url": "https://sreehari-sruthi.vercel.app/",
+  "theme": "N38"
+ },
+ {
+  "name": "Sreejith & Aiswarya",
+  "url": "https://sreejith-aiswarya.vercel.app/",
+  "theme": "N38"
+ }
+]
