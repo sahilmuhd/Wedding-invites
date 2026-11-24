@@ -1,6 +1,6 @@
 import Image from "next/image";
 import type { DesignItem } from "@/types/invitation";
-import { categoryLabel } from "@/lib/invitations";
+import { categoryLabel } from "@/lib/categories";
 import { NameCard } from "./NameCard";
 
 /** Thumbnail + name + category. The whole card opens the preview (a plain ?design= link without JS). */
