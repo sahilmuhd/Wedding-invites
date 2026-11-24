@@ -1,5 +1,5 @@
 import { brand } from "@/config/brand";
-import { generalEnquiryLink } from "@/lib/whatsapp";
+import { generalEnquiryLink, uaeEnquiryLink } from "@/lib/whatsapp";
 import { LogoMark } from "@/components/ui/Logo";
 
 export function Footer() {
@@ -18,7 +18,12 @@ export function Footer() {
           </li>
           <li>
             <a href={generalEnquiryLink()} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center hover:text-maroon">
-              WhatsApp {brand.phoneDisplay}
+              WhatsApp India {brand.phoneDisplay}
+            </a>
+          </li>
+          <li>
+            <a href={uaeEnquiryLink()} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center hover:text-maroon">
+              WhatsApp UAE {brand.uaePhoneDisplay}
             </a>
           </li>
         </ul>

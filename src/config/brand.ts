@@ -12,6 +12,9 @@ export const brand = {
   phoneDisplay: "+91 75609 43996",
   /** Digits only, with country code, used for wa.me links. */
   whatsappNumber: "917560943996",
+  /** Second contact for clients in the UAE. */
+  uaePhoneDisplay: "+971 50 299 6383",
+  uaeWhatsappNumber: "971502996383",
   instagramHandle: "@weddingwebsites.in",
   instagramUrl: "https://www.instagram.com/weddingwebsites.in",
   /**

@@ -11,7 +11,9 @@ export type CtaLocation =
   | "pricing-signature"
   | "closing"
   | "bar"
-  | "empty-state";
+  | "empty-state"
+  | "closing-uae"
+  | "footer-uae";
 
 /** Build a wa.me link with a properly encoded message. */
 export function whatsappLink(message: string): string {
@@ -20,6 +22,12 @@ export function whatsappLink(message: string): string {
 
 export const generalEnquiryLink = () =>
   whatsappLink(`Hi ${brand.name}! I'd like a wedding invitation website. Our event date is: `);
+
+/** Same greeting, sent to the UAE (Dubai) number. */
+export const uaeEnquiryLink = () =>
+  `https://wa.me/${brand.uaeWhatsappNumber}?text=${encodeURIComponent(
+    `Hi ${brand.name}! I'd like a wedding invitation website. Our event date is: `,
+  )}`;
 
 export const designEnquiryLink = (design: string, category: string) =>
   whatsappLink(`Hi ${brand.name}! I'd like to book the "${design}" design (${category}). Our event date is: `);

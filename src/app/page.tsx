@@ -21,6 +21,10 @@ export default function Home() {
         url: brand.siteUrl,
         logo: `${brand.siteUrl}/brand/icon-maroon.svg`,
         telephone: brand.phoneDisplay,
+        contactPoint: [
+          { "@type": "ContactPoint", telephone: brand.phoneDisplay, contactType: "customer service", areaServed: "IN" },
+          { "@type": "ContactPoint", telephone: brand.uaePhoneDisplay, contactType: "customer service", areaServed: "AE" },
+        ],
         slogan: brand.tagline,
         sameAs: [brand.instagramUrl],
       },
