@@ -32,7 +32,6 @@ export function Pricing() {
                   <span className={`font-serif ${plan.price === null ? "text-4xl" : "text-5xl"} ${dark ? "text-white" : "text-maroon"}`}>
                     {formatPrice(plan.price)}
                   </span>
-                  {plan.price !== null && <span className={`text-sm ${dark ? "text-white/80" : "text-ink-soft"}`}>one-time</span>}
                 </p>
                 <ul className={`mt-6 flex-1 space-y-3 border-t pt-6 ${dark ? "border-white/20" : "border-line"}`}>
                   {plan.features.map((f) =>

@@ -9,7 +9,7 @@ export const hero = {
   /** Rendered as: {before}<em>{em}</em>{after} */
   title: { before: "Your wedding, ", em: "beautifully", after: " invited." },
   sub: "A personalised invitation website for your Nikah, wedding or engagement, with your song, a live countdown and one-tap directions. Ready in 24 hours.",
-  reassurance: ["From ₹999", "Book with ₹200", "Pay the rest after you approve"],
+  reassurance: ["From ₹999", "Book with an advance payment", "Pay the rest after you approve"],
   cta: "Start on WhatsApp",
   secondary: "See all designs",
 } as const;
@@ -55,7 +55,7 @@ export const featuresTitle = { before: "Everything your guests need, in ", em: "
 export const stepsTitle = { before: "Booked in ", em: "three", after: " messages." } as const;
 export const steps = [
   { title: "Choose a design.", text: "Tap any design to preview it." },
-  { title: "Send your details on WhatsApp.", text: "Names, date, venue and photos. Reserve your slot with a ₹200 UPI advance." },
+  { title: "Send your details on WhatsApp.", text: "Names, date, venue and photos. Reserve your slot with an advance payment." },
   { title: "Approve and share.", text: "Your preview is ready in 24 hours. Approve it, pay the balance and share your link." },
 ] as const;
 
@@ -81,18 +81,18 @@ export const guestDesk = {
 } as const;
 
 export const pricingCopy = {
-  title: { before: "One-time price. ", em: "No surprises.", after: "" },
-  terms: ["₹200 UPI advance to book", "Balance after you approve the preview", "Delivered in 24 hours"],
+  title: { before: "Simple pricing. ", em: "No surprises.", after: "" },
+  terms: ["Advance payment to book", "Balance after you approve the preview", "Delivered in 24 hours"],
 } as const;
 
 export const testimonialsTitle = { before: "From our ", em: "couples", after: "." } as const;
 
 export const faqTitle = { before: "Questions, ", em: "answered", after: "." } as const;
 export const faqs: { q: string; a: string }[] = [
-  { q: "How fast will I get it?", a: "Within 24 hours of receiving your details and the ₹200 advance." },
+  { q: "How fast will I get it?", a: "Within 24 hours of receiving your details and the advance payment." },
   {
     q: "How do I pay?",
-    a: "₹200 by UPI to book, adjusted in your total. The balance is paid after you approve the preview.",
+    a: "An advance payment by UPI books your slot and is adjusted in your total. The balance is paid after you approve the preview.",
   },
   {
     q: "Can it match our colours and traditions?",
