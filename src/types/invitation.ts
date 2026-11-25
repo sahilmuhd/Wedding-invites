@@ -35,6 +35,8 @@ export interface Invitation {
   poster: string | null;
   posterSize?: [number, number];
   featured?: number;
+  /** Made as a Signature-plan invitation (shows a "Signature" badge). */
+  plan?: "signature";
   /** Design template (D01…), from scripts/add-themes.mjs. Only one design per theme is shown. */
   theme?: string;
   hidden?: boolean;
@@ -51,4 +53,6 @@ export interface DesignItem {
   posterSize?: [number, number];
   /** Other couples' invitations made with this same design ("Also made for …"). */
   more?: { name: string; url: string }[];
+  /** A Signature-plan invitation. */
+  signature?: boolean;
 }

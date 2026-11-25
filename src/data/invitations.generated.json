@@ -901,7 +901,8 @@
   "posterSize": [
    480,
    947
-  ]
+  ],
+  "plan": "signature"
  },
  {
   "id": "bestin-mareena",
@@ -1278,7 +1279,8 @@
    480,
    1039
   ],
-  "theme": "D47"
+  "theme": "D47",
+  "plan": "signature"
  },
  {
   "id": "sebastian-tejal",
@@ -2422,7 +2424,8 @@
    480,
    1039
   ],
-  "theme": "D36"
+  "theme": "D36",
+  "plan": "signature"
  },
  {
   "id": "jafersadiq-shadiya",
