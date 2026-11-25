@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Star } from "lucide-react";
 import type { DesignItem } from "@/types/invitation";
 import { categoryLabel } from "@/lib/categories";
 import { NameCard } from "./NameCard";
@@ -34,9 +35,18 @@ export function DesignCard({
         ) : (
           <NameCard item={item} />
         )}
-        {item.signature && (
-          <span className="absolute left-2 top-2 rounded-full bg-maroon px-2.5 py-1 text-[11px] font-medium tracking-wide text-white shadow">
-            Signature
+        {(item.topPick || item.signature) && (
+          <span className="absolute left-2 top-2 flex flex-col items-start gap-1">
+            {item.topPick && (
+              <span className="inline-flex items-center gap-1 rounded-full bg-white px-2.5 py-1 text-[11px] font-medium tracking-wide text-maroon shadow">
+                <Star className="size-3" fill="currentColor" aria-hidden="true" /> Top pick
+              </span>
+            )}
+            {item.signature && (
+              <span className="rounded-full bg-maroon px-2.5 py-1 text-[11px] font-medium tracking-wide text-white shadow">
+                Signature
+              </span>
+            )}
           </span>
         )}
       </div>
