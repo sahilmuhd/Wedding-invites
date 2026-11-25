@@ -105,7 +105,7 @@ export const faqs: { q: string; a: string }[] = [
   },
   {
     q: "What’s the difference between RSVP in Premium and the guest desk in Signature?",
-    a: "In Premium, guests’ RSVP replies are collected in a Google Sheet and their wishes come to you on WhatsApp. Signature gives you your own private guest desk: a live list and guest counts, a QR ticket for every guest scanned at the door, a staff login, and wishes you approve and show on your invitation.",
+    a: "In Premium, RSVP replies and the guest count are in a Google Sheet only (there’s no dashboard), and wishes come to you on WhatsApp. Signature gives you an admin dashboard on your website with a secure login: see the guest count and all wishes live, check guests in with a QR ticket at the door, give your staff their own login, and approve wishes to show on your invitation.",
   },
   {
     q: "Can I show guests’ wishes on my invitation with Premium?",
