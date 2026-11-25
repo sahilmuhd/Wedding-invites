@@ -101,7 +101,7 @@ export const faqs: { q: string; a: string }[] = [
   { q: "Do guests need an app?", a: "No. It’s one link that opens on any phone." },
   {
     q: "Which plan should I choose?",
-    a: "Just want a beautiful invitation to share? Classic. Want to know who’s coming and collect wishes? Premium. Planning a big event and want check-in at the door? Signature.",
+    a: "Just want a beautiful invitation to share? Classic. Want an animated opening, up to 20 photos, RSVPs and wishes? Premium. Celebrating several events (Haldi, Sangeeth, Reception, Wedding) with an animation video for each, lots of photos and reels, and check-in at the door? Signature.",
   },
   {
     q: "What’s the difference between RSVP in Premium and the guest desk in Signature?",
