@@ -100,8 +100,20 @@ export const faqs: { q: string; a: string }[] = [
   },
   { q: "Do guests need an app?", a: "No. It’s one link that opens on any phone." },
   {
-    q: "What’s the difference between the plans?",
-    a: "Premium adds RSVP, a photo gallery and add-to-calendar. Signature adds a private guest desk: a live RSVP list, QR check-in at the door, a staff login and wish approval.",
+    q: "Which plan should I choose?",
+    a: "Just want a beautiful invitation to share? Classic. Want to know who’s coming and collect wishes? Premium. Planning a big event and want check-in at the door? Signature.",
+  },
+  {
+    q: "What’s the difference between RSVP in Premium and the guest desk in Signature?",
+    a: "In Premium, guests’ RSVP replies are collected in a Google Sheet and their wishes come to you on WhatsApp. Signature gives you your own private guest desk: a live list and guest counts, a QR ticket for every guest scanned at the door, a staff login, and wishes you approve and show on your invitation.",
+  },
+  {
+    q: "Can I show guests’ wishes on my invitation with Premium?",
+    a: "Yes, as an add-on from ₹200. Signature includes it.",
+  },
+  {
+    q: "Can you make a design just for us?",
+    a: "Yes. Custom designs start from ₹1,499: a brand-new theme, any colours you like, or a design based on a reference you love.",
   },
   // TODO(owner): confirm the hosting period, then add:
   // { q: "How long does my link stay live?", a: "…" },
