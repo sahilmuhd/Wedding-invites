@@ -19,6 +19,7 @@ const sorted = visible
   .map((i, idx) => ({ i, idx }))
   .sort(
     (a, b) =>
+      (a.i.topPick ?? 99) - (b.i.topPick ?? 99) ||
       (a.i.featured ?? 99) - (b.i.featured ?? 99) ||
       Number(!!b.i.poster) - Number(!!a.i.poster) ||
       a.idx - b.idx,
@@ -66,6 +67,7 @@ export const designItems: DesignItem[] = reps.map((i) => ({
   posterSize: i.posterSize,
   ...(extras.get(i.id)?.length ? { more: extras.get(i.id) } : {}),
   ...(i.plan === "signature" ? { signature: true } : {}),
+  ...(i.topPick ? { topPick: true } : {}),
 }));
 
 /** Total invitations shown across designs (cards + "also made for"). */
