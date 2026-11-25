@@ -77,6 +77,13 @@ export const guestDesk = {
     { src: "/guest-desk/checkin.webp", caption: "Optional: check-in at the door", alt: "Optional check-in screen: QR scanner and a guest marked as checked in" },
   ],
   note: "Shown with sample guests.",
+  /** Real Signature invitations, opened in the in-site preview. */
+  examples: [
+    { id: "sig-jishnu-vibha", name: "Vibha & Jishnu", url: "https://jishnu-vibha.skenllp.com/" },
+    { id: "sig-mansi-theja", name: "Mansi & Teja Sai", url: "https://mansi-theja.vercel.app/" },
+    { id: "sig-naadham-rishi", name: "Naadham & Rishi", url: "https://naadham-rishi.vercel.app/" },
+  ],
+  examplesTitle: "See real Signature invitations",
   link: "See the Signature plan",
 } as const;
 

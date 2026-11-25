@@ -3,6 +3,7 @@ import { ArrowDown, Check } from "lucide-react";
 import { guestDesk } from "@/config/content";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { PhoneFrame } from "@/components/ui/PhoneFrame";
+import { SignatureExamples } from "./SignatureExamples";
 
 /** Signature plan showcase: the real guest-desk dashboard, shown with sample data. */
 export function GuestDesk() {
@@ -19,6 +20,7 @@ export function GuestDesk() {
               </li>
             ))}
           </ul>
+          <SignatureExamples title={guestDesk.examplesTitle} examples={guestDesk.examples} />
           <a
             href="#signature"
             className="mt-7 inline-flex min-h-11 items-center gap-1.5 text-maroon underline decoration-maroon/30 underline-offset-4 hover:decoration-maroon"

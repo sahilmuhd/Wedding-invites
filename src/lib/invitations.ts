@@ -65,6 +65,7 @@ export const designItems: DesignItem[] = reps.map((i) => ({
   poster: i.poster && i.poster.replace(/^\/invitations\//, "/designs/"),
   posterSize: i.posterSize,
   ...(extras.get(i.id)?.length ? { more: extras.get(i.id) } : {}),
+  ...(i.plan === "signature" ? { signature: true } : {}),
 }));
 
 /** Total invitations shown across designs (cards + "also made for"). */
