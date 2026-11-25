@@ -79,9 +79,11 @@ export const guestDesk = {
   note: "Shown with sample guests.",
   /** Real Signature invitations, opened in the in-site preview. */
   examples: [
-    { id: "sig-jishnu-vibha", name: "Vibha & Jishnu", url: "https://jishnu-vibha.skenllp.com/" },
-    { id: "sig-mansi-theja", name: "Mansi & Teja Sai", url: "https://mansi-theja.vercel.app/" },
-    { id: "sig-naadham-rishi", name: "Naadham & Rishi", url: "https://naadham-rishi.vercel.app/" },
+    { id: "sig-jishnu-vibha", name: "Vibha & Jishnu", url: "https://jishnu-vibha.skenllp.com/", category: "Hindu" },
+    { id: "sig-mansi-theja", name: "Mansi & Teja Sai", url: "https://mansi-theja.vercel.app/", category: "Hindu" },
+    { id: "sig-naadham-rishi", name: "Naadham & Rishi", url: "https://naadham-rishi.vercel.app/", category: "Hindu" },
+    // TODO(owner): confirm Athul & Kiran's category (shown as "Wedding" until then).
+    { id: "sig-athul-kiran", name: "Athul Raj & Kiran", url: "https://athul-kiran.vercel.app/", category: "Wedding" },
   ],
   examplesTitle: "See real Signature invitations",
   link: "See the Signature plan",
