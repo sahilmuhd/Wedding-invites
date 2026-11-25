@@ -37,7 +37,8 @@ export const pricing = {
       bestFor: "Know who's coming.",
       features: [
         "Everything in Classic, plus:",
-        "Photo gallery with many photos",
+        "Animated opening video",
+        "Photo gallery, up to 20 photos",
         "RSVP: replies collected in a Google Sheet",
         "Guest wishes box (wishes sent to you on WhatsApp)",
         "Add to calendar",
@@ -50,6 +51,8 @@ export const pricing = {
       bestFor: "Manage every guest, right up to the day.",
       features: [
         "Everything in Premium, plus:",
+        "A separate animation video for each event: Haldi, Sangeeth, Reception, Wedding or any other",
+        "Many photos and reels",
         "Private guest desk with secure login",
         "Live RSVP list and guest counts per event",
         "QR ticket for every guest, scanned at the door",
@@ -64,7 +67,9 @@ export const pricing = {
   compare: [
     { label: "Personalised invitation website", values: [true, true, true] },
     { label: "Your song, live countdown, Google Maps", values: [true, true, true] },
-    { label: "Photos", values: ["Up to 2", "Gallery, many photos", "Gallery, many photos"] },
+    { label: "Photos", values: ["Up to 2", "Gallery, up to 20", "Many photos + reels"] },
+    { label: "Animated opening video", values: [false, true, true] },
+    { label: "Separate animation video for each event (Haldi, Sangeeth, Reception, Wedding…)", values: [false, false, true] },
     { label: "Guests can RSVP", values: [false, true, true] },
     { label: "Where you see RSVPs", values: [false, "Google Sheet", "Your own guest desk, live"] },
     { label: "Guest wishes", values: [false, "Wishes box, sent to you on WhatsApp", "Approve and show on invitation"] },
