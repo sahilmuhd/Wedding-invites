@@ -13,6 +13,7 @@ export type CtaLocation =
   | "bar"
   | "empty-state"
   | "closing-uae"
+  | "custom-design"
   | "footer-uae";
 
 /** Build a wa.me link with a properly encoded message. */
@@ -31,6 +32,11 @@ export const uaeEnquiryLink = () =>
 
 export const designEnquiryLink = (design: string, category: string) =>
   whatsappLink(`Hi ${brand.name}! I'd like to book the "${design}" design (${category}). Our event date is: `);
+
+export const customDesignLink = () =>
+  whatsappLink(
+    `Hi ${brand.name}! I'd like a custom design for our invitation. My idea / reference: `,
+  );
 
 export const planEnquiryLink = (plan: string, price: number | null) =>
   whatsappLink(
