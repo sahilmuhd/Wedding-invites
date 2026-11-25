@@ -62,19 +62,19 @@ export const steps = [
 /** Signature plan's guest desk. Screenshots are the real dashboard rendered with sample data. */
 export const guestDesk = {
   eyebrow: "Signature plan",
-  title: { before: "Know who’s coming. ", em: "Welcome", after: " them at the door." },
-  text: "Your own private guest desk: see every RSVP as it arrives, and check guests in with a quick QR scan on the day.",
+  title: { before: "Every event, its own ", em: "animation", after: "." },
+  text: "Haldi, Sangeeth, Reception, Wedding: each event gets its own animation video. And your private dashboard shows the guest count and every wish, live.",
   points: [
-    "Live RSVP list and guest counts for each event",
-    "A QR ticket for every guest, scanned at the door",
-    "A separate staff login for the check-in desk",
-    "Approve guest wishes before they appear",
+    "A separate animation video for each event",
+    "Live guest count and RSVP list for each event",
+    "See every wish, and choose which to show on your invitation",
+    "Optional: QR check-in at the door, with a staff login",
   ],
   screens: [
-    { src: "/guest-desk/overview.webp", caption: "Overview", alt: "Guest desk overview: total RSVPs, expected guests and check-ins per event" },
-    { src: "/guest-desk/checkin.webp", caption: "Check-in at the door", alt: "Check-in screen: camera QR scanner and a guest marked as checked in" },
+    { src: "/guest-desk/overview.webp", caption: "Guest count, live", alt: "Dashboard overview: total RSVPs and expected guests for each event" },
     { src: "/guest-desk/guests.webp", caption: "Guest list", alt: "Guest list with search, filters and CSV export" },
-    { src: "/guest-desk/wishes.webp", caption: "Wishes to approve", alt: "Guest wishes waiting for approval" },
+    { src: "/guest-desk/wishes.webp", caption: "Wishes", alt: "Guest wishes waiting for approval" },
+    { src: "/guest-desk/checkin.webp", caption: "Optional: check-in at the door", alt: "Optional check-in screen: QR scanner and a guest marked as checked in" },
   ],
   note: "Shown with sample guests.",
   link: "See the Signature plan",
@@ -101,11 +101,11 @@ export const faqs: { q: string; a: string }[] = [
   { q: "Do guests need an app?", a: "No. It’s one link that opens on any phone." },
   {
     q: "Which plan should I choose?",
-    a: "Just want a beautiful invitation to share? Classic. Want an animated opening, up to 20 photos, RSVPs and wishes? Premium. Celebrating several events (Haldi, Sangeeth, Reception, Wedding) with an animation video for each, lots of photos and reels, and check-in at the door? Signature.",
+    a: "Just want a beautiful invitation to share? Classic. Want an animated opening, up to 20 photos, RSVPs and wishes? Premium. Celebrating several events (Haldi, Sangeeth, Reception, Wedding) and want an animation video for each, lots of photos and reels, and a dashboard for your guests and wishes? Signature.",
   },
   {
     q: "What’s the difference between RSVP in Premium and the guest desk in Signature?",
-    a: "In Premium, RSVP replies and the guest count are in a Google Sheet only (there’s no dashboard), and wishes come to you on WhatsApp. Signature gives you an admin dashboard on your website with a secure login: see the guest count and all wishes live, check guests in with a QR ticket at the door, give your staff their own login, and approve wishes to show on your invitation.",
+    a: "In Premium, RSVP replies and the guest count are in a Google Sheet only (there’s no dashboard), and wishes come to you on WhatsApp. Signature gives you an admin dashboard on your website with a secure login: see the guest count and all wishes live, and approve wishes to show on your invitation. If you like, it can also check guests in with a QR ticket at the door, with a separate staff login (optional).",
   },
   {
     q: "Can I show guests’ wishes on my invitation with Premium?",
