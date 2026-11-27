@@ -24,7 +24,7 @@ export const demo = {
     url: "https://fidha-kabeer.vercel.app/",
     poster: "/designs/fidha-kabeer.webp",
     cta: "Open the live invitation",
-    hint: "Scroll inside the phone · tap for music",
+    hint: "Scroll inside the phone · tap for music · preview only: RSVP and wishes are turned off",
   },
 } as const;
 
