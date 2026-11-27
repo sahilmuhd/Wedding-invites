@@ -111,7 +111,9 @@ export function PreviewSheet({ item, onClose }: { item: DesignItem; onClose: () 
         >
           <div className="min-w-0">
             <p id="sheet-title" className="truncate font-serif text-lg leading-tight text-maroon">{current.name}</p>
-            <p className="truncate text-xs text-ink-soft">{isOriginal ? category : `Created from ${item.name}`}</p>
+            <p className="truncate text-xs text-ink-soft">
+              {isOriginal ? category : `Created from ${item.name}`} · Preview: RSVP & wishes off
+            </p>
           </div>
           <button
             type="button"
@@ -130,7 +132,7 @@ export function PreviewSheet({ item, onClose }: { item: DesignItem; onClose: () 
             {current.url && !showFallback && (
               <iframe
                 key={current.url}
-                src={current.url}
+                src={`/preview?u=${encodeURIComponent(current.url)}`}
                 title={`${current.name} — live invitation preview`}
                 loading="lazy"
                 allow="autoplay; fullscreen"

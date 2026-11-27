@@ -20,7 +20,15 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   async headers() {
     return [
-      { source: "/:path*", headers: securityHeaders },
+      // Everything except /preview (previewed invitations load their own files via <base>, which base-uri 'self' would block).
+      { source: "/((?!preview).*)", headers: securityHeaders },
+      {
+        source: "/preview",
+        headers: [
+          { key: "Content-Security-Policy", value: "frame-ancestors 'self'; object-src 'none'" },
+          ...securityHeaders.filter((h) => h.key !== "Content-Security-Policy"),
+        ],
+      },
       {
         source: "/designs/:path*",
         headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }],

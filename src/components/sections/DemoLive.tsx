@@ -14,7 +14,7 @@ export function DemoLive({ name, url, poster, cta }: { name: string; url: string
   if (live) {
     return (
       <iframe
-        src={url}
+        src={`/preview?u=${encodeURIComponent(url)}`}
         title={`${name} — live invitation`}
         allow="autoplay; fullscreen"
         className="absolute inset-0 h-full w-full border-0 bg-white"
