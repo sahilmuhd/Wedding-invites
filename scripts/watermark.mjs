@@ -92,10 +92,13 @@ fs.mkdirSync(pub("designs"), { recursive: true });
 const posters = fs.readdirSync(src("invitations")).filter((f) => f.endsWith(".webp") && (!only.length || only.includes(f.replace(/\.webp$/, ""))));
 // Designs whose names or key artwork sit where the mark normally goes (bottom of the visible card).
 const POSITION = { "aysha-farhan-falakh-shahzar": "top-right" };
+// Designs whose names sit at the very bottom of the card: lift the mark above them (gap from the card's bottom edge, px).
+const BOTTOM_GAP = { "fidha-kabeer": 145 };
 for (const f of posters) {
   const { width } = await sharp(src("invitations", f)).metadata();
-  const position = POSITION[f.replace(/\.webp$/, "")] ?? "bottom";
-  tally(await markImage(src("invitations", f), pub("designs", f), { widthFrac: 0.34, bottomGap: 22, visibleH: Math.round((width * 5) / 3), position }));
+  const id = f.replace(/\.webp$/, "");
+  const position = POSITION[id] ?? "bottom";
+  tally(await markImage(src("invitations", f), pub("designs", f), { widthFrac: 0.34, bottomGap: BOTTOM_GAP[id] ?? 22, visibleH: Math.round((width * 5) / 3), position }));
 }
 if (!only.length) {
   fs.mkdirSync(pub("guest-desk"), { recursive: true });
