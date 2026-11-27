@@ -16,21 +16,16 @@ export const hero = {
 
 export const demo = {
   title: { before: "Watch it ", em: "open", after: "." },
-  text: "Real invitations, exactly as guests see them on their phones. Tap for sound.",
-  videos: [
-    {
-      src: "/videos/demo-ajish-sikha.mp4",
-      poster: "/videos/demo-ajish-sikha-cover.jpg",
-      title: "Ajish & Sikha",
-      text: "Velvet curtains part onto their journey, with the day’s schedule.",
-    },
-    {
-      src: "/videos/demo-fidha-hatib.mp4",
-      poster: "/videos/demo-fidha-hatib-cover.jpg",
-      title: "Fidha & Hatib",
-      text: "Curtains open into a candlelit ballroom.",
-    },
-  ],
+  text: "A real invitation, live. Open it and scroll through, exactly as your guests will.",
+  /** The live invitation shown in the phone (loads only when the visitor taps). */
+  live: {
+    name: "Fidha Jasmine & Ahammadul Kabeer",
+    caption: "Nikah · our most loved design",
+    url: "https://fidha-kabeer.vercel.app/",
+    poster: "/designs/fidha-kabeer.webp",
+    cta: "Open the live invitation",
+    hint: "Scroll inside the phone · tap for music",
+  },
 } as const;
 
 export const designs = {
