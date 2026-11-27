@@ -5,7 +5,6 @@
 //   node scripts/watermark.mjs <id> ...   # only these invitation posters (after scripts/capture.mjs)
 import fs from "node:fs";
 import path from "node:path";
-import { execFileSync } from "node:child_process";
 import sharp from "sharp";
 
 const root = path.resolve(import.meta.dirname, "..");
@@ -65,23 +64,6 @@ async function markImage(inFile, outFile, { widthFrac, bottomGap, visibleH, forc
   return style.color;
 }
 
-async function markVideo(inFile, outFile, coverFile, { widthFrac, bottomGap }) {
-  // Decide colour from the cover frame, render the mark to PNG, overlay with ffmpeg.
-  const { width, height } = await sharp(coverFile).metadata();
-  const markW = Math.round(width * widthFrac);
-  const { height: markH } = await sharp(markSvg(markW, "#FFFFFF", 1, false)).metadata();
-  const left = Math.round((width - markW) / 2) - 4, top = height - bottomGap - markH;
-  // Video backgrounds change while playing, so videos always get a white mark with a stronger shadow.
-  const style = { color: "#FFFFFF", opacity: 0.85, shadow: true };
-  const png = path.join(root, "media-src", ".mark.png");
-  await sharp(markSvg(markW, style.color, style.opacity, style.shadow)).png().toFile(png);
-  execFileSync("ffmpeg", ["-v", "error", "-y", "-i", inFile, "-i", png,
-    "-filter_complex", `[0:v][1:v]overlay=${left}:${top}:format=auto,format=yuv420p`,
-    "-c:v", "libx264", "-profile:v", "main", "-crf", "24", "-preset", "slow", "-c:a", "copy", "-movflags", "+faststart", outFile]);
-  fs.rmSync(png);
-  return style.color;
-}
-
 /* ---------- run ---------- */
 const only = process.argv.slice(2);
 const count = { maroon: 0, white: 0 };
@@ -92,21 +74,18 @@ fs.mkdirSync(pub("designs"), { recursive: true });
 const posters = fs.readdirSync(src("invitations")).filter((f) => f.endsWith(".webp") && (!only.length || only.includes(f.replace(/\.webp$/, ""))));
 // Designs whose names or key artwork sit where the mark normally goes (bottom of the visible card).
 const POSITION = { "aysha-farhan-falakh-shahzar": "top-right" };
+// Designs whose names sit at the very bottom of the card: lift the mark above them (gap from the card's bottom edge, px).
+const BOTTOM_GAP = { "fidha-kabeer": 145 };
 for (const f of posters) {
   const { width } = await sharp(src("invitations", f)).metadata();
-  const position = POSITION[f.replace(/\.webp$/, "")] ?? "bottom";
-  tally(await markImage(src("invitations", f), pub("designs", f), { widthFrac: 0.34, bottomGap: 22, visibleH: Math.round((width * 5) / 3), position }));
+  const id = f.replace(/\.webp$/, "");
+  const position = POSITION[id] ?? "bottom";
+  tally(await markImage(src("invitations", f), pub("designs", f), { widthFrac: 0.34, bottomGap: BOTTOM_GAP[id] ?? 22, visibleH: Math.round((width * 5) / 3), position }));
 }
 if (!only.length) {
   fs.mkdirSync(pub("guest-desk"), { recursive: true });
   // Guest-desk screens show the dashboard with sample data and are full of text to the edges,
   // so a mark would sit on top of UI. They are copied as-is.
   for (const f of fs.readdirSync(src("guest-desk"))) fs.copyFileSync(src("guest-desk", f), pub("guest-desk", f));
-  for (const n of ["ajish-sikha", "fidha-hatib"]) {
-    const opts = { widthFrac: 0.34, bottomGap: 120 };
-    // The cover is the frame shown before playing; give it the same white mark as its video.
-    await markImage(src("videos", `demo-${n}-cover.jpg`), pub("videos", `demo-${n}-cover.jpg`), { ...opts, forceWhite: true });
-    tally(await markVideo(src("videos", `demo-${n}.mp4`), pub("videos", `demo-${n}.mp4`), src("videos", `demo-${n}-cover.jpg`), opts));
-  }
 }
-console.log(`watermarked ${posters.length} posters${only.length ? "" : " + guest desk + demo videos"} (maroon mark: ${count.maroon}, white mark: ${count.white})`);
+console.log(`watermarked ${posters.length} posters${only.length ? "" : " + copied guest desk screens"} (maroon mark: ${count.maroon}, white mark: ${count.white})`);
